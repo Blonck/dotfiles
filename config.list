@@ -1,0 +1,18 @@
+# the big things
+awesome			~/.config/awesome
+#emacs.d		~/.emacs.d
+#fluxbox		~/.fluxbox
+#screenrc		~/.screenrc
+#xprofile	 	~/.xprofile
+#Xresources	~/.Xresources
+#zsh        ~/zsh
+zshrc			  ~/.zshrc
+#zshenv 		~/.zshenv
+
+# the small things
+ssh_config	~/.ssh/config
+vim			    ~/.vim
+vimrc			  ~/.vimrc
+gvimrc      ~/.gvimrc
+gitconfig	 	~/.gitconfig
+gitignore   ~/.gitignore
