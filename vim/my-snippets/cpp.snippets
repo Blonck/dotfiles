@@ -1,0 +1,113 @@
+#includes
+snippet inc "#include local header (inc)"
+#include "${1:`!p snip.rv = snip.basename + '.h'`}"
+endsnippet
+
+snippet Inc "#include <> (Inc)"
+#include <${1:.h}>
+endsnippet
+
+#main
+snippet main "main() (main)"
+int main(int argc, char const *argv[])
+{
+	${0:/* code */}
+	return 0;
+}
+endsnippet
+
+#loops
+snippet for "for int loop (fori)"
+for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2})
+{
+	${0:/* code */}
+}
+endsnippet
+
+snippet fora "for each loop"
+for (auto &${1:elem}: ${2:Array})
+{
+	${0:/* code */}
+}
+endsnippet
+
+snippet forit "for loop iterator-like"
+for (auto ${1:cur} = ${2:container}.begin(); $1 < $2.end(); ++$1)
+{
+  ${0:/* code */}
+}
+snippet 
+
+snippet do "do...while loop (do)"
+do {
+	${0:/* code */}
+} while(${1:/* condition */});
+endsnippet
+
+#conditions
+snippet if "if .. (if)"
+if (${1:/* condition */})
+{
+	${0:/* code */}
+}
+endsnippet
+
+# include guard
+snippet once "#pragma once"
+#pragma once
+endsnippet
+
+# output
+snippet cout "std::cout << ... << \n"
+std::cout << ${1:"Hello"} << "\n"
+endsnippet
+
+snippet cerr "std::cerr << ... << \n"
+std::cerr << ${1:"Hello"} << "\n"
+endsnippet
+
+snippet beginend "$1.begin(), $1.end() (beginend)"
+${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+endsnippet
+
+snippet class "class .. (class)"
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/} (${2:arguments});
+	virtual ~${1/(\w+).*/$1/} ();
+
+private:
+	${0:/* data */}
+};
+endsnippet
+
+snippet ns "namespace .. (namespace)"
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
+{
+	$0
+}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
+endsnippet
+
+snippet readfile "read file (readF)"
+std::vector<char> v;
+if (FILE *fp = fopen(${1:"filename"}, "r"))
+{
+	char buf[1024];
+	while(size_t len = fread(buf, 1, sizeof(buf), fp))
+		v.insert(v.end(), buf, buf + len);
+	fclose(fp);
+}
+endsnippet
+
+snippet map "std::map (map)"
+std::map<${1:key}, ${2:value}> map$0;
+endsnippet
+
+snippet vector "std::vector (v)"
+std::vector<${1:char}> v$0;
+endsnippet
+
+snippet tp "template <class ..> (template)"
+template <class ${1:_InputIter}>
+endsnippet

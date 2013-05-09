@@ -1,8 +1,24 @@
-" enables pathogen, plugin which make it possible to install all plugins/addons
-" under .vim/bundle in own subdirs
-" must be loaded at first
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
+" enables vundle
+set nocompatible " be iMproved
+filetype off     " required!
+
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+Bundle 'c.vim'
+Bundle 'UltiSnips'
+Bundle 'jcf/vim-latex'
+Bundle 'tpope/vim-fugitive'
+Bundle 'chrisbra/SudoEdit.vim'
+Bundle 'Rip-Rip/clang_complete'
+Bundle 'klen/python-mode'
+Bundle 'hsitz/VimOrganizer'
+
+filetype plugin indent on " required!
 
 " change the mapleader to ,
 let mapleader=","
@@ -26,7 +42,7 @@ set wildignore=*.o,*.swp,*pyc 	" ignoring file extensions
 set wildmode=list:full "complete word until longest match
 set noerrorbells 		" don't beep
 set nobackup				" no backup files
-set browsedir=current		" which directory to use for the file browser
+set browsedir=current		" which directory to use for
 set tags+=~/.vim/tags/cpp	" set tags directory
 "set foldmethod=syntax		" set folding method to syntax
 set mouse=a					" enables mouse in all modes
@@ -41,22 +57,28 @@ set nospell
 highlight folded guibg=purple4 guifg=white
 set foldnestmax=3
 
-" mark the 81 character in each line
-highlight OverLength ctermbg=white ctermfg=red
-match OverLength '\%81v.'
-
 " enables syntax highliting if existing
 if has("syntax")
   syntax on
 endif
 
-" clangcomplete setting
+" UltiSnips setting
+set runtimepath+=~/.vim/my-snippets/
+let g:UltiSnipsSnippetsDir='~/.vim/my-snippets/'
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories=["my-snippets"]
+
+" clang_format mapping
+map <C-K> :pyf ~/.vim/clang-format.py<CR>
+imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
+
+" clang_complete setting
+let g:clang_user_options='|| exit 0'
 let g:clang_use_library=1
 let g:clang_user_options = '-std=c++11'
-let g:clang_complete_auto=0
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'snipmate'
-let g:snippets_dir='~/.vim/snippets-snipmate/'
+let g:clang_library_path='/usr/local/lib/'
+let g:clang_snippets =1
+let g:clang_snippets_engine ='ultisnips'
 
 " VimOrganizer settings
 let g:ft_irgnore_pat = '\.org'
@@ -74,10 +96,16 @@ if has("autocmd")
   " au BufNewFile,BufRead *.cpp set syntax=cpp11
   " au BufNewFile,BufRead *.hpp set syntax=cpp11
   " set comment to doxystyle format
-  autocmd Filetype c,cpp,hpp set comments^=:///
+  au Filetype c,cpp,hpp setlocal comments^=:///
+  au FileType c,cpp,hpp match Excess /\%100.*/
 
-  " indenting for python files
-  au FileType python setlocal tabstop=4 expandtab smarttab shiftwidth=2 softtabstop=2 foldmethod=indent
+  " when editing python files
+  au FileType python setlocal tabstop=4 expandtab smarttab shiftwidth=2 softtabstop=2
+  au FileType python setlocal foldmethod=indent
+  au FileType python highlight Excess ctermbg=DarkGrey guibg=red
+  au FileType python match Excess /\%100.*/
+  au FileType python set nowrap
+
 
   " Uncomment the following to have Vim jump to the last position when
   " reopening a file
