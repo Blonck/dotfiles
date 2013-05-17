@@ -103,7 +103,7 @@ if has("autocmd")
   au FileType python setlocal tabstop=4 expandtab smarttab shiftwidth=2 softtabstop=2
   au FileType python setlocal foldmethod=indent
   au FileType python highlight Excess ctermbg=DarkGrey guibg=red
-  au FileType python match Excess /\%100.*/
+  au FileType python match Excess /\%100v.*/
   au FileType python set nowrap
 
 
