@@ -3,8 +3,8 @@ snippet inc "#include local header (inc)"
 #include "${1:`!p snip.rv = snip.basename + '.h'`}"
 endsnippet
 
-snippet Inc "#include <> (Inc)"
-#include <${1:.h}>
+snippet Inc "#include "
+#include <${1}>
 endsnippet
 
 #main
@@ -18,22 +18,19 @@ endsnippet
 
 #loops
 snippet for "for int loop (fori)"
-for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2})
-{
+for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}){
 	${0:/* code */}
 }
 endsnippet
 
 snippet fora "for each loop"
-for (auto &${1:elem}: ${2:Array})
-{
+for (auto &${1:elem}: ${2:Array}){
 	${0:/* code */}
 }
 endsnippet
 
 snippet forit "for loop iterator-like"
-for (auto ${1:cur} = ${2:container}.begin(); $1 < $2.end(); ++$1)
-{
+for (auto ${1:cur} = ${2:container}.begin(); $1 < $2.end(); ++$1){
   ${0:/* code */}
 }
 snippet 
@@ -46,8 +43,7 @@ endsnippet
 
 #conditions
 snippet if "if .. (if)"
-if (${1:/* condition */})
-{
+if (${1:/* condition */}){
 	${0:/* code */}
 }
 endsnippet

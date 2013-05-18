@@ -17,6 +17,7 @@ Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'klen/python-mode'
 Bundle 'hsitz/VimOrganizer'
+Bundle 'Lokaltog/powerline'
 
 filetype plugin indent on " required!
 
@@ -38,7 +39,7 @@ set hlsearch				" highliting search terms
 set incsearch				" incrementell search
 set history=1000 		" bigger search and commands history
 set undolevels=1000 " much more undo levels
-set wildignore=*.o,*.swp,*pyc 	" ignoring file extensions
+set wildignore=*.o,*.swp,*.pyc 	" ignoring file extensions
 set wildmode=list:full "complete word until longest match
 set noerrorbells 		" don't beep
 set nobackup				" no backup files
@@ -65,8 +66,8 @@ endif
 " UltiSnips setting
 set runtimepath+=~/.vim/my-snippets/
 let g:UltiSnipsSnippetsDir='~/.vim/my-snippets/'
-let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetDirectories=["my-snippets"]
+let g:UltiSnipsEditSplit='vertical'
 
 " clang_format mapping
 map <C-K> :pyf ~/.vim/clang-format.py<CR>
@@ -74,15 +75,28 @@ imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 
 " clang_complete setting
 let g:clang_user_options='|| exit 0'
-let g:clang_use_library=1
+let g:clang_auto_select = 1
+let g:clang_use_library = 1
 let g:clang_user_options = '-std=c++11'
-let g:clang_library_path='/usr/local/lib/'
-let g:clang_snippets =1
-let g:clang_snippets_engine ='ultisnips'
+let g:clang_library_path = '/usr/local/lib/'
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'ultisnips'
+let g:clang_hl_errors = 1
+let g:clang_periodic_quickfix = 1
 
 " VimOrganizer settings
 let g:ft_irgnore_pat = '\.org'
 let g:org_command_for_emacsclient = 'emacsclient'
+
+" pymode options
+let g:pymode_lint_minheight = 3
+let g:pymode_lint_maxheight = 8
+let g:pymode_lint_mccabe_complexity = 10
+let g:pymode_lint_message = 1
+let g:pymode_lint_ignore = "E501"
+
+" powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 if has("autocmd")
   " enable detecting filetypes
@@ -96,14 +110,13 @@ if has("autocmd")
   " au BufNewFile,BufRead *.cpp set syntax=cpp11
   " au BufNewFile,BufRead *.hpp set syntax=cpp11
   " set comment to doxystyle format
-  au Filetype c,cpp,hpp setlocal comments^=:///
-  au FileType c,cpp,hpp match Excess /\%100.*/
+  au FileType c,cpp,hpp setlocal comments^=:///
 
   " when editing python files
-  au FileType python setlocal tabstop=4 expandtab smarttab shiftwidth=2 softtabstop=2
+  au FileType python setlocal tabstop=8 expandtab smarttab shiftwidth=4 softtabstop=4
   au FileType python setlocal foldmethod=indent
   au FileType python highlight Excess ctermbg=DarkGrey guibg=red
-  au FileType python match Excess /\%100.*/
+  au FileType python match Excess /\%100v.*/
   au FileType python set nowrap
 
 
