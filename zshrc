@@ -24,6 +24,8 @@ SAVEHIST=10000
 setopt autocd extendedglob
 unsetopt correct_all   #unset auto correction
 
+setopt NO_BEEP
+
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -65,6 +67,17 @@ alias -g L='|less'
 # local ENVIROMENTVARIABLES
 export EDITOR="vim"
 export BROWSER="firefox"
-export PATH="$PATH:~/exe/"
-export PATH="$PATH:~/bin/"
-export PATH="$PATH:/usr/local/bin/"
+
+export workdir="/scratch/dobby/marenz/Science/Sphere-Collapse-MUCA/"
+
+# PATH expanding
+pathdirs=(
+~/bin
+~/exe
+)
+
+for dir in $pathdirs; do
+  if [ -d $dir ];then 
+    path+=$dir
+  fi
+done
