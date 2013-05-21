@@ -19,7 +19,6 @@ endsnippet
 #loops
 snippet for "for int loop (fori)"
 for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}){
-	${0:/* code */}
 }
 endsnippet
 
@@ -55,11 +54,11 @@ endsnippet
 
 # output
 snippet cout "std::cout << ... << \n"
-std::cout << ${1:"Hello"} << "\n"
+std::cout << ${1:message} << "\n";
 endsnippet
 
 snippet cerr "std::cerr << ... << \n"
-std::cerr << ${1:"Hello"} << "\n"
+std::cerr << ${1:error} << "\n";
 endsnippet
 
 snippet beginend "$1.begin(), $1.end() (beginend)"
@@ -100,8 +99,8 @@ snippet map "std::map (map)"
 std::map<${1:key}, ${2:value}> map$0;
 endsnippet
 
-snippet vector "std::vector (v)"
-std::vector<${1:char}> v$0;
+snippet vec "std::vector (v)"
+std::vector<${1:double}> v$0;
 endsnippet
 
 snippet tp "template <class ..> (template)"
