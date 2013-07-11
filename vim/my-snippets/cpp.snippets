@@ -29,10 +29,10 @@ for (auto &${1:elem}: ${2:Array}){
 endsnippet
 
 snippet forit "for loop iterator-like"
-for (auto ${1:cur} = ${2:container}.begin(); $1 < $2.end(); ++$1){
+for (auto ${1:cur} = ${2}; $1 < $2; ++$1){
   ${0:/* code */}
 }
-snippet 
+endsnippet 
 
 snippet do "do...while loop (do)"
 do {
@@ -81,7 +81,7 @@ snippet ns "namespace .. (namespace)"
 namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
 {
 	$0
-}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
+}${1/.+/ \/* /m}end of namespace $1${1/.+/ *\/ /m}
 endsnippet
 
 snippet readfile "read file (readF)"

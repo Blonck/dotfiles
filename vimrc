@@ -11,13 +11,11 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 Bundle 'c.vim'
 Bundle 'UltiSnips'
-Bundle 'jcf/vim-latex'
 Bundle 'tpope/vim-fugitive'
 Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'klen/python-mode'
 Bundle 'hsitz/VimOrganizer'
-Bundle 'Lokaltog/powerline'
 
 filetype plugin indent on " required!
 
@@ -63,12 +61,6 @@ if has("syntax")
   syntax on
 endif
 
-" key mappings
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 " UltiSnips setting
 set runtimepath+=~/.vim/my-snippets/
 let g:UltiSnipsSnippetsDir='~/.vim/my-snippets/'
@@ -100,6 +92,9 @@ let g:pymode_lint_maxheight = 8
 let g:pymode_lint_mccabe_complexity = 10
 let g:pymode_lint_message = 1
 let g:pymode_lint_ignore = "E501, C901"
+
+" vim-latex options
+let g:tex_flavor='latex'
 
 " powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
