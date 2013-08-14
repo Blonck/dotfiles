@@ -16,6 +16,7 @@ Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'klen/python-mode'
 Bundle 'hsitz/VimOrganizer'
+Bundle 'vim-startify'
 
 filetype plugin indent on " required!
 
