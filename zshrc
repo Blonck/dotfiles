@@ -74,6 +74,7 @@ export workdir="/scratch/dobby/marenz/Science/Sphere-Collapse-MUCA/"
 pathdirs=(
 ~/bin
 ~/exe
+~/anaconda/bin
 )
 
 for dir in $pathdirs; do
