@@ -119,7 +119,7 @@ layouts =
 tags = {}
 if screen.count() == 1 then
   tags = {
-    names  = {"1", "2", "www", "chat", "media", "6", "7", "8", "9" },
+    names  = {"1", "2", "www", "mail", "media", "6", "7", "8", "9" },
     layout = { layouts[2], layouts[2], layouts[1], layouts[1], layouts[1],
     layouts[1], layouts[1], layouts[1], layouts[1]
   }}
@@ -129,7 +129,7 @@ if screen.count() == 1 then
 elseif screen.count() == 2 then
  tags = {
    settings = {
-     { names  = { "www", "chat", "media", "4", "5", "6", "7" },
+     { names  = { "www", "mail", "media", "4", "5", "6", "7" },
        layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
      },
      { names  = { "1", "2", "3", "4", "5", "6", "7" },
@@ -490,11 +490,13 @@ if screen.count() == 2 then
     properties = { floating = true } },
     { rule = { class = "Firefox" },
     properties = { tag = tags[1][1] }, floating = false },
-    { rule = { class = "Thunderbird" },
+    { rule = { class = "thunderbird" },
     properties = { tag = tags[1][2] }, },
     { rule = { class = "banshee" },
     properties = { tag = tags[1][3] }, floating = false },
     { rule = { class = "Miro" },
+    properties = { tag = tags[1][3] }, floating = false },
+    { rule = { class = "Amarok" },
     properties = { tag = tags[1][3] }, floating = false },
   }
 else
@@ -512,11 +514,13 @@ else
     properties = { floating = true } },
     { rule = { class = "Firefox" },
     properties = { tag = tags[1][3] }, floating = false },
-    { rule = { class = "Pidgin" },
+    { rule = { class = "thunderbird" },
     properties = { tag = tags[1][4] } },
     { rule = { class = "banshee" },
     properties = { tag = tags[1][5] }, floating = false },
     { rule = { class = "Miro" },
+    properties = { tag = tags[1][5] }, floating = false },
+    { rule = { class = "Amarok" },
     properties = { tag = tags[1][5] }, floating = false },
   }
 end
