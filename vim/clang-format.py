@@ -27,7 +27,8 @@ binary = 'clang-format'
 
 # Change this to format according to other formatting styles (see
 # clang-format -help)
-style = 'Mozilla'
+style = "{BasedOnStyle: Google}"
+
 
 # Get the current text.
 buf = vim.current.buffer

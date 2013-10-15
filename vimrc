@@ -15,7 +15,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'klen/python-mode'
-Bundle 'hsitz/VimOrganizer'
+" Bundle 'hsitz/VimOrganizer'
 Bundle 'vim-startify'
 
 filetype plugin indent on " required!
@@ -81,7 +81,6 @@ let g:clang_library_path = '/usr/local/lib/'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'ultisnips'
 let g:clang_hl_errors = 1
-let g:clang_periodic_quickfix = 1
 
 " VimOrganizer settings
 let g:ft_irgnore_pat = '\.org'
@@ -94,19 +93,17 @@ let g:pymode_lint_mccabe_complexity = 10
 let g:pymode_lint_message = 1
 let g:pymode_lint_ignore = "E501, C901"
 
-" vim-latex options
-let g:tex_flavor='latex'
+" startify
+let g:startify_files_number = 20
 
-" powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 if has("autocmd")
   " enable detecting filetypes
   filetype plugin indent on
 
   " vimOrganizer
-  au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-  au BufEnter *.org call org#SetOrgFileType()
+  " au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+  " au BufEnter *.org call org#SetOrgFileType()
 
   " new c++11 syntax
   " au BufNewFile,BufRead *.cpp set syntax=cpp11
