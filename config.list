@@ -16,3 +16,4 @@ vimrc			  ~/.vimrc
 gvimrc      ~/.gvimrc
 gitconfig	 	~/.gitconfig
 gitignore   ~/.gitignore
+clang-format ~/.clang-format
