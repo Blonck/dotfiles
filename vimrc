@@ -40,12 +40,16 @@ set history=1000 		" bigger search and commands history
 set undolevels=1000 " much more undo levels
 set wildignore=*.o,*.swp,*.pyc 	" ignoring file extensions
 set wildmode=list:full "complete word until longest match
+set visualbell
 set noerrorbells 		" don't beep
 set nobackup				" no backup files
 set browsedir=current		" which directory to use for
 set tags+=~/.vim/tags/cpp	" set tags directory
-"set foldmethod=syntax		" set folding method to syntax
 set mouse=a					" enables mouse in all modes
+
+if has('gui_running')
+  set colors=koehler
+endif
 
 " spell
 setlocal spell spelllang=en_us
