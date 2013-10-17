@@ -69,12 +69,13 @@ export EDITOR="vim"
 export BROWSER="firefox"
 
 export workdir="/scratch/dobby/marenz/Science/Sphere-Collapse-MUCA/"
+export scratch="/scratch/cluster/marenz/"
 
 # PATH expanding
 pathdirs=(
 ~/bin
 ~/exe
-~/anaconda/bin
+/net/nfs/opt/bin
 )
 
 for dir in $pathdirs; do
