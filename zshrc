@@ -22,6 +22,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt autocd extendedglob
+unsetopt nomatch
 unsetopt correct_all   #unset auto correction
 
 setopt NO_BEEP
