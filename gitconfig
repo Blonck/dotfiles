@@ -1,5 +1,7 @@
 [user]
 	name = Martin Marenz
-	email = martin.marenz@gmail.com
+	email = marenz@itp.uni-leipzig.de
 [push]
 	default = simple
+[merge]
+	tool = vimdiff
