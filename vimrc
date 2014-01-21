@@ -9,13 +9,20 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
+" syntax for julia language
+Bundle 'JuliaLang/julia-vim'
 Bundle 'c.vim'
+" great snippet engine
 Bundle 'UltiSnips'
+" vim integration
 Bundle 'tpope/vim-fugitive'
-Bundle 'chrisbra/SudoEdit.vim'
+" clang complete integration
 Bundle 'Rip-Rip/clang_complete'
+" ultra xomplex python mode
 Bundle 'klen/python-mode'
-" Bundle 'hsitz/VimOrganizer'
+" handlw org mode files
+Bundle 'hsitz/VimOrganizer'
+" change start screen of vim
 Bundle 'vim-startify'
 
 filetype plugin indent on " required!
@@ -47,10 +54,6 @@ set browsedir=current		" which directory to use for
 set tags+=~/.vim/tags/cpp	" set tags directory
 set mouse=a					" enables mouse in all modes
 
-if has('gui_running')
-  set colors=koehler
-endif
-
 " spell
 setlocal spell spelllang=en_us
 
@@ -78,10 +81,11 @@ imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 
 " clang_complete setting
 let g:clang_user_options='|| exit 0'
-let g:clang_auto_select = 1
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
 let g:clang_use_library = 1
 let g:clang_user_options = '-std=c++11'
-let g:clang_library_path = '/usr/local/lib/'
+" let g:clang_library_path = '/usr/local/lib/'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'ultisnips'
 let g:clang_hl_errors = 1
@@ -106,12 +110,9 @@ if has("autocmd")
   filetype plugin indent on
 
   " vimOrganizer
-  " au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-  " au BufEnter *.org call org#SetOrgFileType()
+  au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+  au BufEnter *.org call org#SetOrgFileType()
 
-  " new c++11 syntax
-  " au BufNewFile,BufRead *.cpp set syntax=cpp11
-  " au BufNewFile,BufRead *.hpp set syntax=cpp11
   " set comment to doxystyle format
   au FileType c,cpp,hpp setlocal comments^=:///
 
@@ -121,7 +122,6 @@ if has("autocmd")
   au FileType python highlight Excess ctermbg=DarkGrey guibg=red
   au FileType python match Excess /\%100v.*/
   au FileType python set nowrap
-
 
   " Uncomment the following to have Vim jump to the last position when
   " reopening a file
@@ -134,4 +134,6 @@ if has("autocmd")
   au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   set complete =.,w,b,u,k,t
   set completeopt=menu,longest,preview
+  "ignore boost for includes
+  set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
 endif
