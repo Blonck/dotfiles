@@ -57,9 +57,7 @@ set browsedir=current		" which directory to use for
 set tags+=~/.vim/tags/cpp	" set tags directory
 set mouse=a					" enables mouse in all modes
 
-if has('gui_running')
-  colorscheme desert
-endif
+colorscheme desert
 
 " spell
 setlocal spell spelllang=en_us
