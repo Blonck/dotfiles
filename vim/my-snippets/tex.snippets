@@ -8,7 +8,7 @@ snippet dt "\\frac{d}{dT} " i
 \frac{d}{dT}
 endsnippet
 
-snippet / "\\frac{}{} "
+snippet / "\\frac{}{} " i
 \frac{$1}{$2}
 endsnippet
 
@@ -18,6 +18,10 @@ endsnippet
 
 snippet ga "\\alpha" i
 \alpha
+endsnippet
+
+snippet gg "\\gamma" i
+\gamma
 endsnippet
 
 snippet ge "\\epsilon" i
@@ -68,13 +72,25 @@ snippet r "\ref{}" w
 \ref{$1}
 endsnippet
 
-snippet c "\ref{}" w
+snippet c "\cite{}" w
 \cite{$1}
 endsnippet
 
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
 ###########################################################################
+
+snippet frame "frame"
+\begin{frame}
+  ${0:${VISUAL}}
+\end{frame}
+endsnippet
+
+snippet center "center"
+\begin{frame}
+  ${0:${VISUAL}}
+\end{frame}
+endsnippet
 
 #################
 # GENERAL STUFF #

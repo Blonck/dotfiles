@@ -15,6 +15,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'klen/python-mode'
+Bundle 'davidbeckingsale/writegood.vim'
 " Bundle 'hsitz/VimOrganizer'
 Bundle 'vim-startify'
 
@@ -48,7 +49,7 @@ set tags+=~/.vim/tags/cpp	" set tags directory
 set mouse=a					" enables mouse in all modes
 
 if has('gui_running')
-  set colors=koehler
+  colorscheme desert
 endif
 
 " spell
@@ -65,6 +66,8 @@ set foldnestmax=3
 if has("syntax")
   syntax on
 endif
+
+" c.vim settings
 
 " UltiSnips setting
 set runtimepath+=~/.vim/my-snippets/
