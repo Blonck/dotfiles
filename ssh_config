@@ -33,6 +33,18 @@ Host diamant
       User root
       CheckHostIP yes
 
+Host ldap
+      HostName ldap.physik.uni-leipzig.de
+      ForwardAgent yes
+      User root
+      CheckHostIP yes
+
+Host nfs
+      HostName nfs.physik.uni-leipzig.de
+      ForwardAgent yes
+      User root
+      CheckHostIP yes
+
 Host *.physik.uni-leipzig.de
       User marenz
       ForwardAgent yes
