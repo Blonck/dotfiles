@@ -51,3 +51,7 @@ SpaceAfterControlStatementKeyword: false
 PointerBindsToType: true
 NamespaceIndentation: false
 AlwaysBreakTemplateDeclarations: true
+
+AlignTrailingComments: true
+AllowShortFunctionsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
