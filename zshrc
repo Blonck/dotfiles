@@ -84,3 +84,10 @@ for dir in $pathdirs; do
     path+=$dir
   fi
 done
+
+if [ ! "$(ls -A ~/HomeITP)" ];then
+  sshfs marenz@dobby.physik.uni-leipzig.de:/home/marenz ~/HomeITP
+fi
+if [ ! "$(ls -A ~/ScratchCluster)" ];then
+  sshfs marenz@dobby.physik.uni-leipzig.de:/scratch/cluster-nfs/marenz ~/ScratchCluster
+fi
