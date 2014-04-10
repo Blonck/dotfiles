@@ -15,17 +15,19 @@ fi
 
 autoload -U colors && colors
 autoload -Uz compinit promptinit
-compinit
+
+compinit -i
 promptinit
+
+for config_file in (~/.zsh/*)
+do
+  source $config_file
+done
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt autocd extendedglob
-unsetopt nomatch
-unsetopt correct_all   #unset auto correction
-
-setopt NO_BEEP
 
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -41,53 +43,4 @@ zstyle ':completion:*' menu select
 bindkey "${terminfo[kcuu1]}" up-line-or-search
 bindkey "${terminfo[kcud1]}" down-line-or-search
 # needed for color output
-# define Prompt
-PROMPT="%n@%m:%2~:[%?] "
-RPROMPT="'%T-%D'"
 
-# local aliases
-alias ls='ls --color=auto -F'
-alias lsa='ls -al'
-alias lsh='ls -ld .*'
-alias f='find |grep'
-alias ..='cd ..'
-
-# auto extension
-alias -s html=$BROWSER
-alias -s txt=$EDITOR
-alias -s tex=$EDITOR
-alias -s h=$EDITOR
-alias -s cpp=$EDITOR
-alias -s hpp=$EDITOR
-alias -s pdf=evince
-alias -s ps=evince
-
-# command L equivalent to command |less
-alias -g L='|less'
-
-# local ENVIROMENTVARIABLES
-export EDITOR="vim"
-export BROWSER="firefox"
-
-export workdir="/scratch/dobby/marenz/Science/Sphere-Collapse-MUCA/"
-export scratch="/scratch/cluster-nfs/marenz/"
-
-# PATH expanding
-pathdirs=(
-~/bin
-~/exe
-/net/nfs/opt/bin
-)
-
-for dir in $pathdirs; do
-  if [ -d $dir ];then 
-    path+=$dir
-  fi
-done
-
-if [ ! "$(ls -A ~/HomeITP)" ];then
-  sshfs marenz@dobby.physik.uni-leipzig.de:/home/marenz ~/HomeITP
-fi
-if [ ! "$(ls -A ~/ScratchCluster)" ];then
-  sshfs marenz@dobby.physik.uni-leipzig.de:/scratch/cluster-nfs/marenz ~/ScratchCluster
-fi
