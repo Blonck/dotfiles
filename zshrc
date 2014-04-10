@@ -70,7 +70,7 @@ export EDITOR="vim"
 export BROWSER="firefox"
 
 export workdir="/scratch/dobby/marenz/Science/Sphere-Collapse-MUCA/"
-export scratch="/scratch/cluster/marenz/"
+export scratch="/scratch/cluster-nfs/marenz/"
 
 # PATH expanding
 pathdirs=(
