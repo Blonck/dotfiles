@@ -19,7 +19,7 @@ autoload -Uz compinit promptinit
 compinit -i
 promptinit
 
-for config_file in (~/.zsh/*)
+for config_file in ~/.zsh/*
 do
   source $config_file
 done
