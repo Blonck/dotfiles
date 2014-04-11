@@ -10,7 +10,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 " syntax for julia language
-Bundle 'JuliaLang/julia-vim'
+" Bundle 'JuliaLang/julia-vim'
 Bundle 'c.vim'
 " great snippet engine
 Bundle 'UltiSnips'
@@ -27,6 +27,9 @@ Bundle 'davidbeckingsale/writegood.vim'
 Bundle 'hsitz/VimOrganizer'
 " change start screen of vim
 Bundle 'vim-startify'
+
+" rust syntax highliting
+Bundle 'wting/rust.vim'
 
 filetype plugin indent on " required!
 
