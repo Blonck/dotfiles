@@ -4,7 +4,7 @@ awesome			~/.config/awesome
 #fluxbox		~/.fluxbox
 #screenrc		~/.screenrc
 #xprofile	 	~/.xprofile
-#zsh        ~/zsh
+zsh         ~/.zsh
 zshrc			  ~/.zshrc
 Xresources	~/.Xresources
 #zshenv 		~/.zshenv
