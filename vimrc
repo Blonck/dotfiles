@@ -82,8 +82,6 @@ if has("syntax")
   syntax on
 endif
 
-" c.vim settings
-
 " UltiSnips setting
 set runtimepath+=~/.vim/my-snippets/
 let g:UltiSnipsSnippetsDir='~/.vim/my-snippets/'
@@ -101,18 +99,6 @@ imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 let g:ycm_confirm_extra_conf = 0
-
-" clang_complete setting
-" let g:clang_complete_auto = 0
-" let g:clang_complete_copen = 1
-" let g:clang_auto_select = 1
-" let g:clang_memory_percent = 70
-" let g:clang_use_library = 1
-" let g:clang_user_options = '-std=c++11 || exit 0'
-" let g:clang_library_path = '/usr/local/lib'
-" let g:clang_snippets = 1
-" let g:clang_snippets_engine = 'ultisnips'
-" let g:clang_hl_errors = 1
 
 " VimOrganizer settings
 let g:ft_irgnore_pat = '\.org'
@@ -158,6 +144,4 @@ if has("autocmd")
   au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   set complete =.,w,b,u,k,t
   set completeopt=menu,longest,preview
-  "ignore boost for includes
-  set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
 endif
