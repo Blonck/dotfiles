@@ -1,3 +1,21 @@
+#header
+snippet header
+/*
+ * =====================================================================================
+ *
+ *       Filename:  `!p snip.rv = fn`
+ *
+ *    Description:  ${1}
+ *
+ *        Version:  1.0
+ *        Created:  `!v strftime("%Y-%m-%d")`
+ *
+ *         Author:  Martin Marenz
+ *
+ * =====================================================================================
+ */
+endsnippet
+
 #includes
 snippet inc "#include local header (inc)"
 #include "${1:`!p snip.rv = snip.basename + '.h'`}"
@@ -55,6 +73,13 @@ endsnippet
 snippet if "if .. (if)"
 if (${1:/* condition */}){
 	${0:/* code */}
+}
+endsnippet
+
+snippet ifelse "ifelse .. (ifelse)"
+if (${1:/* condition */}){
+	${0:/* code */}
+}else{
 }
 endsnippet
 

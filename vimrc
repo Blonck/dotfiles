@@ -16,8 +16,10 @@ Bundle 'c.vim'
 Bundle 'UltiSnips'
 " vim integration
 Bundle 'tpope/vim-fugitive'
-" clang complete integration
-Bundle 'Rip-Rip/clang_complete'
+" clang complete integration (obsolete because of YCM)
+" Bundle 'Rip-Rip/clang_complete'
+" YouCompleteMe
+Bundle 'Valloric/YouCompleteMe'
 " ultra complex python mode
 Bundle 'klen/python-mode'
 " 
@@ -35,6 +37,9 @@ filetype plugin indent on " required!
 
 " change the mapleader to ,
 let mapleader=","
+
+" fix xterm bug
+set t_kb=
 
 set hidden					" hide buffers instead of closing
 set nowrap					" don't wrap lines
@@ -84,21 +89,30 @@ set runtimepath+=~/.vim/my-snippets/
 let g:UltiSnipsSnippetsDir='~/.vim/my-snippets/'
 let g:UltiSnipsSnippetDirectories=["my-snippets"]
 let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsExpandTrigger='<C-l>'
+let g:UltiSnipsJumpForwardTrigger='<C-j>'
+let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 
 " clang_format mapping
 map <C-K> :pyf ~/.vim/clang-format.py<CR>
 imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 
+" everything for YCM completer
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+let g:ycm_confirm_extra_conf = 0
+
 " clang_complete setting
-let g:clang_user_options='|| exit 0'
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_use_library = 1
-let g:clang_user_options = '-std=c++11'
-let g:clang_library_path = '/usr/local/lib'
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'ultisnips'
-let g:clang_hl_errors = 1
+" let g:clang_complete_auto = 0
+" let g:clang_complete_copen = 1
+" let g:clang_auto_select = 1
+" let g:clang_memory_percent = 70
+" let g:clang_use_library = 1
+" let g:clang_user_options = '-std=c++11 || exit 0'
+" let g:clang_library_path = '/usr/local/lib'
+" let g:clang_snippets = 1
+" let g:clang_snippets_engine = 'ultisnips'
+" let g:clang_hl_errors = 1
 
 " VimOrganizer settings
 let g:ft_irgnore_pat = '\.org'

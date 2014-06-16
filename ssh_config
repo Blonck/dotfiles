@@ -2,7 +2,7 @@ HashKnownHosts no
 
 Host juropa
         HostName  juropa.fz-juelich.de
-        User      hlz172
+        User      hlz212
         ForwardAgent yes
         CheckHostIP yes
         Compression yes
