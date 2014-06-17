@@ -43,4 +43,3 @@ zstyle ':completion:*' menu select
 bindkey "${terminfo[kcuu1]}" up-line-or-search
 bindkey "${terminfo[kcud1]}" down-line-or-search
 # needed for color output
-

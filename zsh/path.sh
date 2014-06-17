@@ -1,6 +1,7 @@
 # PATH expanding
 pathdirs=(
 ~/bin
+~/local/bin
 ~/exe
 /net/nfs/opt/bin
 )
