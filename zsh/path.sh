@@ -4,6 +4,8 @@ pathdirs=(
 ~/local/bin
 ~/exe
 /net/nfs/opt/bin
+/usr/local/go/bin
+/usr/local/texlive/2014/bin/x86_64-linux
 )
 
 for dir in $pathdirs; do
@@ -11,5 +13,3 @@ for dir in $pathdirs; do
     path+=$dir
   fi
 done
-
-
