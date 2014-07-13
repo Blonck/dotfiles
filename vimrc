@@ -9,29 +9,37 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-" syntax for julia language
-" Bundle 'JuliaLang/julia-vim'
 Bundle 'c.vim'
 " great snippet engine
 Bundle 'UltiSnips'
 " vim integration
 Bundle 'tpope/vim-fugitive'
-" clang complete integration (obsolete because of YCM)
-" Bundle 'Rip-Rip/clang_complete'
 " YouCompleteMe
 Bundle 'Valloric/YouCompleteMe'
 " ultra complex python mode
 Bundle 'klen/python-mode'
 " 
 Bundle 'davidbeckingsale/writegood.vim'
-" Bundle 'hsitz/VimOrganizer'
 " handlw org mode files
 Bundle 'hsitz/VimOrganizer'
 " change start screen of vim
 Bundle 'vim-startify'
+" NERDTree with tabs
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+" coloscheme 
+Bundle 'altercation/vim-colors-solarized'
+" gundo
+Bundle 'sjl/gundo.vim'
+" conque shell
+Bundle 'vim-scripts/Conque-Shell'
 
 " rust syntax highliting
-Bundle 'wting/rust.vim'
+" Bundle 'wting/rust.vim'
+" Bundle 'hsitz/VimOrganizer'
+" Bundle 'Rip-Rip/clang_complete'
+" syntax for julia language
+" Bundle 'JuliaLang/julia-vim'
 
 filetype plugin indent on " required!
 
@@ -65,7 +73,9 @@ set browsedir=current		" which directory to use for
 set tags+=~/.vim/tags/cpp	" set tags directory
 set mouse=a					" enables mouse in all modes
 
-colorscheme desert
+syntax enable
+set background=dark
+colorscheme solarized
 
 " spell
 setlocal spell spelllang=en_us
@@ -77,11 +87,6 @@ set nospell
 highlight folded guibg=purple4 guifg=white
 set foldnestmax=3
 
-" enables syntax highliting if existing
-if has("syntax")
-  syntax on
-endif
-
 " UltiSnips setting
 set runtimepath+=~/.vim/my-snippets/
 let g:UltiSnipsSnippetsDir='~/.vim/my-snippets/'
@@ -91,6 +96,14 @@ let g:UltiSnipsExpandTrigger='<C-l>'
 let g:UltiSnipsJumpForwardTrigger='<C-j>'
 let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 
+" gundoToggle
+nnoremap <F5> :GundoToggle<CR>
+nnoremap <F4> :NERDTreeTabsToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+" toggle background color
+call togglebg#map("<F6>")
+
 " clang_format mapping
 map <C-K> :pyf ~/.vim/clang-format.py<CR>
 imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
@@ -98,7 +111,11 @@ imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 " everything for YCM completer
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
-let g:ycm_confirm_extra_conf = 0
+let g:ycm_warning_symbol = '@@'
+let g:ycm_always_populate_location_list = 1
+let g:ycm_allow_changing_updatetime = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 " VimOrganizer settings
 let g:ft_irgnore_pat = '\.org'
@@ -113,6 +130,8 @@ let g:pymode_lint_ignore = "E501, C901"
 
 " startify
 let g:startify_files_number = 20
+
+" nerdtree_tabs config
 
 
 if has("autocmd")
