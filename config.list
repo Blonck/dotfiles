@@ -18,4 +18,4 @@ gvimrc      ~/.gvimrc
 gitconfig	 	~/.gitconfig
 gitignore   ~/.gitignore
 clang-format ~/.clang-format
-ymc_extra_conf.py ~/.ymc_extra_conf.py
+ycm_extra_conf.py ~/.ycm_extra_conf.py
