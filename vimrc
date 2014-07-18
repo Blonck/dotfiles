@@ -2,16 +2,16 @@
 set nocompatible " be iMproved
 filetype off     " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " My Bundles here:
 Bundle 'c.vim'
 " great snippet engine
-Bundle 'UltiSnips'
+Bundle 'SirVer/UltiSnips'
 " vim integration
 Bundle 'tpope/vim-fugitive'
 " YouCompleteMe
@@ -32,7 +32,7 @@ Bundle 'altercation/vim-colors-solarized'
 " gundo
 Bundle 'sjl/gundo.vim'
 " conque shell
-Bundle 'vim-scripts/Conque-Shell'
+Bundle 'oplatek/Conque-Shell'
 
 " rust syntax highliting
 " Bundle 'wting/rust.vim'
@@ -41,6 +41,7 @@ Bundle 'vim-scripts/Conque-Shell'
 " syntax for julia language
 " Bundle 'JuliaLang/julia-vim'
 
+call vundle#end()
 filetype plugin indent on " required!
 
 " change the mapleader to ,
@@ -73,6 +74,8 @@ set browsedir=current		" which directory to use for
 set tags+=~/.vim/tags/cpp	" set tags directory
 set mouse=a					" enables mouse in all modes
 
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
 syntax enable
 set background=dark
 colorscheme solarized
@@ -99,7 +102,10 @@ let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 " gundoToggle
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F4> :NERDTreeTabsToggle<CR>
+" nerdtee toggle
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_gui_startup=0
+let g:nerdtree_tabns_open_on_new_tab=0
 
 " toggle background color
 call togglebg#map("<F6>")
@@ -157,7 +163,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
   " The current directory is the directory of the file in the current window.
-  autocmd BufEnter * :lchdir %:p:h
+  autocmd BufEnter * if expand('%:p') !~ '://' | :lchdi %:p:h | endif
 
   " automatically open and close the popup menu / preview window
   au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
