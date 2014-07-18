@@ -2,6 +2,6 @@
 	name = Martin Marenz
 	email = marenz@itp.uni-leipzig.de
 [push]
-	default = simple
+	default = matching
 [merge]
 	tool = vimdiff
