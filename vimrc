@@ -8,38 +8,38 @@ call vundle#begin()
 " let Vundle manage Vundle
 Bundle 'gmarik/Vundle.vim'
 
-" My Bundles here:
-Bundle 'c.vim'
+" My Plugins here:
+Plugin 'c.vim'
 " great snippet engine
 Bundle 'SirVer/UltiSnips'
 " vim integration
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 " YouCompleteMe
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " ultra complex python mode
-Bundle 'klen/python-mode'
+Plugin 'klen/python-mode'
 " 
-Bundle 'davidbeckingsale/writegood.vim'
+Plugin 'davidbeckingsale/writegood.vim'
 " handlw org mode files
-Bundle 'hsitz/VimOrganizer'
+Plugin 'hsitz/VimOrganizer'
 " change start screen of vim
-Bundle 'vim-startify'
+Plugin 'vim-startify'
 " NERDTree with tabs
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 " coloscheme 
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 " gundo
-Bundle 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 " conque shell
-Bundle 'oplatek/Conque-Shell'
+Plugin 'vim-scripts/Conque-Shell'
 
 " rust syntax highliting
-" Bundle 'wting/rust.vim'
-" Bundle 'hsitz/VimOrganizer'
-" Bundle 'Rip-Rip/clang_complete'
+" Plugin 'wting/rust.vim'
+" Plugin 'hsitz/VimOrganizer'
+" Plugin 'Rip-Rip/clang_complete'
 " syntax for julia language
-" Bundle 'JuliaLang/julia-vim'
+" Plugin 'JuliaLang/julia-vim'
 
 call vundle#end()
 filetype plugin indent on " required!
@@ -91,12 +91,18 @@ highlight folded guibg=purple4 guifg=white
 set foldnestmax=3
 
 " UltiSnips setting
+" make vim recognizing snippets dir
 set runtimepath+=~/.vim/my-snippets/
+" use different snippets dir
 let g:UltiSnipsSnippetsDir='~/.vim/my-snippets/'
 let g:UltiSnipsSnippetDirectories=["my-snippets"]
+" use vertical split to edit snippets
 let g:UltiSnipsEditSplit='vertical'
+" trigger snippet with Ctrl-L
 let g:UltiSnipsExpandTrigger='<C-l>'
+" go to next snippet with Ctrl-j
 let g:UltiSnipsJumpForwardTrigger='<C-j>'
+" go to previous snippet with Ctrl-k
 let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 
 " gundoToggle
