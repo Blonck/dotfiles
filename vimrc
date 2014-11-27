@@ -17,8 +17,8 @@ Plugin 'tpope/vim-fugitive'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 " ultra complex python mode
-Plugin 'klen/python-mode'
-" 
+" Plugin 'klen/python-mode'
+" checking for common style mistakes
 Plugin 'davidbeckingsale/writegood.vim'
 " handlw org mode files
 Plugin 'hsitz/VimOrganizer'
@@ -31,8 +31,6 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'altercation/vim-colors-solarized'
 " gundo
 Plugin 'sjl/gundo.vim'
-" conque shell
-Plugin 'vim-scripts/Conque-Shell'
 
 " rust syntax highliting
 " Plugin 'wting/rust.vim'
@@ -73,8 +71,6 @@ set nobackup				" no backup files
 set browsedir=current		" which directory to use for
 set tags+=~/.vim/tags/cpp	" set tags directory
 set mouse=a					" enables mouse in all modes
-
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 syntax enable
 set background=dark
@@ -122,6 +118,9 @@ imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 
 " everything for YCM completer
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+" own mappings
+:nnoremap <Leader>s :%s/<C-r><C-w>/<C-r><C-w>
 
 let g:ycm_warning_symbol = '@@'
 let g:ycm_always_populate_location_list = 1
