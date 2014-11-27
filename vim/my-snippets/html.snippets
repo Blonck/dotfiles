@@ -1,11 +1,11 @@
 snippet < "<> .. <\> (multiple lines)"
-<${1:env}>
-	${0:${VISUAL}}
+<${1:env} ${2:${VISUAL}}>
+	${3:${VISUAL}}
 </$1>
 endsnippet
 
 snippet << "<> .. <\> (one line)"
-<${1:env}> ${0:${VISUAL}} </$1>
+<${1:env} ${2:${VISUAL}}>${3:${VISUAL}}</$1>
 endsnippet
 
 snippet a "<a href=> </a>"
@@ -17,10 +17,20 @@ snippet { "{{ }}"
 {{ ${1:insert} }}
 endsnippet
 
+snippet div "<div class=> </div>"
+<div class="${1:container}">
+	${2:${VISUAL}}
+</div>
+endsnippet
+
 snippet block "block ..."
 {% block ${1:block} %}
-
+	${0:${VISUAL}}
 {% endblock %}
+endsnippet
+
+snippet extend "{% extends base.html %}"
+{% extends "${1:base.html}" %}
 endsnippet
 
 snippet sup "super()"
