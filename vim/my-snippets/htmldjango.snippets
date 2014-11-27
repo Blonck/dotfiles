@@ -1,0 +1,58 @@
+snippet < "<> .. <\> (multiple lines)"
+<${1:env} ${2:${VISUAL}}>
+	${3:${VISUAL}}
+</$1>
+endsnippet
+
+snippet << "<> .. <\> (one line)"
+<${1:env} ${2:${VISUAL}}>${3:${VISUAL}}</$1>
+endsnippet
+
+snippet a "<a href=> </a>"
+<a href="${1:link}"> ${0:${VISUAL}} </a>
+endsnippet
+
+# snippets for template engine jinja2
+snippet { "{{ }}"
+{{ ${1:insert} }}
+endsnippet
+
+snippet div "<div class=> </div>"
+<div class="${1:container}">
+	${2:${VISUAL}}
+</div>
+endsnippet
+
+snippet block "block ..."
+{% block ${1:block} %}
+	${0:${VISUAL}}
+{% endblock %}
+endsnippet
+
+snippet extend "{% extends base.html %}"
+{% extends "${1:base.html}" %}
+endsnippet
+
+snippet sup "super()"
+{{ super() }}
+endsnippet
+
+snippet if "{% if ..."
+{% if ${1:bool} %}
+	${0:${VISUAL}}
+{% endif %}
+endsnippet
+
+snippet ifel "{% if %} {% else %} {% endif %}"
+{% if ${1:bool} %}
+	${2:${VISUAL}}
+{% else %}
+	${3:${VISUAL}}
+{% endif %}
+endsnippet
+
+snippet for "{% for %} {% endfor %}"
+{% for ${1:item} in ${2:items} %}
+	${0:${VISUAL}}
+{% endfor %}
+endsnippet
