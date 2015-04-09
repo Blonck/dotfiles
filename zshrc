@@ -14,7 +14,7 @@ HISTSIZE=50000
 SAVEHIST=50000
 
 # vim mode
-bindkey -d
+bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
