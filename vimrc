@@ -37,7 +37,7 @@ Plugin 'sjl/gundo.vim'
 " Plugin 'hsitz/VimOrganizer'
 " Plugin 'Rip-Rip/clang_complete'
 " syntax for julia language
-" Plugin 'JuliaLang/julia-vim'
+Plugin 'JuliaLang/julia-vim'
 
 call vundle#end()
 filetype plugin indent on " required!
@@ -127,6 +127,18 @@ let g:ycm_always_populate_location_list = 1
 let g:ycm_allow_changing_updatetime = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_filetype_blacklist = {
+  \ 'julia' : 1,
+  \ 'text' : 1,
+  \ 'mail' : 1,
+  \ 'markdown' : 1,
+  \ 'tagbar' : 1,
+  \ 'qf' : 1,
+  \ 'vimwiki' : 1,
+  \ 'unite' : 1,
+  \ 'notes' : 1,
+  \ 'infolog' : 1
+  \}
 
 " VimOrganizer settings
 let g:ft_irgnore_pat = '\.org'
