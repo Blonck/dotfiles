@@ -4,9 +4,10 @@ autoload -Uz compinit promptinit
 compinit -i
 promptinit
 
-source ~/.zsh/*.sh
-source ~/.zsh/*.zsh
-source ~/.zsh/opp/*.zsh
+for config_file in ~/.zsh/*.sh
+do
+  source ${config_file}
+done
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
