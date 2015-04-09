@@ -18,4 +18,5 @@ alias -s ps=evince
 
 # command L equivalent to command |less
 alias -g L='|less'
+alias -g G='|grep'
 

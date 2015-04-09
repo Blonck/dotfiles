@@ -1,35 +1,20 @@
-# Make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
-        printf '%s' ${terminfo[smkx]}
-    }
-    function zle-line-finish () {
-        printf '%s' ${terminfo[rmkx]}
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-else
-    # ...
-fi
-
 autoload -U colors && colors
 autoload -Uz compinit promptinit
 
 compinit -i
 promptinit
 
-for config_file in ~/.zsh/*
-do
-  source $config_file
-done
+source ~/.zsh/*.sh
+source ~/.zsh/*.zsh
+source ~/.zsh/opp/*.zsh
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 
-bindkey -v
+# vim mode
+bindkey -d
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
@@ -39,7 +24,22 @@ zstyle :compinstall filename '~/.zshrc'
 #
 # completion menu with arrowkeys
 zstyle ':completion:*' menu select
+# 
 # arraowkeys -> history search
 bindkey "${terminfo[kcuu1]}" up-line-or-search
 bindkey "${terminfo[kcud1]}" down-line-or-search
-# needed for color output
+
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
