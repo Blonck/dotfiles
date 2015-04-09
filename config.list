@@ -19,3 +19,5 @@ gitconfig	 	~/.gitconfig
 gitignore   ~/.gitignore
 clang-format ~/.clang-format
 ycm_extra_conf.py ~/.ycm_extra_conf.py
+gnuplotting ~/.gnuplotting
+gnuplot ~/.gnuplot
