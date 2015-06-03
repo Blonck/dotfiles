@@ -45,8 +45,7 @@ filetype plugin indent on " required!
 " change the mapleader to ,
 let mapleader=","
 
-" fix xterm bug
-set t_kb=
+set backspace=2
 
 set hidden					" hide buffers instead of closing
 set nowrap					" don't wrap lines
