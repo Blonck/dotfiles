@@ -31,6 +31,11 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'altercation/vim-colors-solarized'
 " gundo
 Plugin 'sjl/gundo.vim'
+"expand regions
+Plugin 'terryma/vim-expand-region.git'
+
+Plugin 'LanguageTool'
+let g:languagetool_jar='~/bin/LanguageTool-3.0/languagetool-commandline.jar'
 
 " rust syntax highliting
 " Plugin 'wting/rust.vim'
@@ -85,6 +90,7 @@ set nospell
 highlight folded guibg=purple4 guifg=white
 set foldnestmax=3
 
+
 " UltiSnips setting
 " make vim recognizing snippets dir
 set runtimepath+=~/.vim/my-snippets/
@@ -104,7 +110,7 @@ let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F4> :NERDTreeTabsToggle<CR>
 " nerdtee toggle
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>m <plug>NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabns_open_on_new_tab=0
 
@@ -112,14 +118,22 @@ let g:nerdtree_tabns_open_on_new_tab=0
 call togglebg#map("<F6>")
 
 " clang_format mapping
-map <C-K> :pyf ~/.vim/clang-format.py<CR>
-imap <C-K> <ESC>:pyf ~/.vim/clang-format.py<CR>i
+map <C-f> :pyf ~/.vim/clang-format.py<CR>
+imap <C-f> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 
 " everything for YCM completer
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " own mappings
-:nnoremap <Leader>s :%s/<C-r><C-w>/<C-r><C-w>
+:nnoremap <Leader>r :%s/<C-r><C-w>/<C-r><C-w>
+:nnoremap <Leader>d :tabnext<CR>
+:nnoremap <Leader>a :tabprevious<CR>
+:inoremap <Leader>a <Esc>:tabnext<CR><i>
+:inoremap <Leader>d <Esc>:tabprevious<CR><i>
+
+" expand regions
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
 
 let g:ycm_warning_symbol = '@@'
 let g:ycm_always_populate_location_list = 1
