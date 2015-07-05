@@ -14,6 +14,7 @@ xscreensaver ~/.xscreensaver
 ssh_config	~/.ssh/config
 vim			    ~/.vim
 vimrc			  ~/.vimrc
+tmux.conf   ~/.tmux.conf
 gvimrc      ~/.gvimrc
 gitconfig	 	~/.gitconfig
 gitignore   ~/.gitignore
