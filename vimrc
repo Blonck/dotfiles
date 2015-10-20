@@ -23,7 +23,7 @@ Plugin 'davidbeckingsale/writegood.vim'
 " handlw org mode files
 Plugin 'hsitz/VimOrganizer'
 " change start screen of vim
-Plugin 'vim-startify'
+"Plugin 'vim-startify'
 " NERDTree with tabs
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -33,6 +33,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'sjl/gundo.vim'
 "expand regions
 Plugin 'terryma/vim-expand-region.git'
+" session plugin
+Plugin 'tpope/vim-obsession'
+" go suite
+Plugin 'fatih/vim-go'
 
 Plugin 'LanguageTool'
 let g:languagetool_jar='~/bin/LanguageTool-3.0/languagetool-commandline.jar'
@@ -47,8 +51,6 @@ Plugin 'JuliaLang/julia-vim'
 call vundle#end()
 filetype plugin indent on " required!
 
-" change the mapleader to ,
-let mapleader=","
 
 set backspace=2
 
@@ -90,6 +92,8 @@ set nospell
 highlight folded guibg=purple4 guifg=white
 set foldnestmax=3
 
+" change the mapleader to ,
+let mapleader=","
 
 " UltiSnips setting
 " make vim recognizing snippets dir
@@ -122,7 +126,8 @@ map <C-f> :pyf ~/.vim/clang-format.py<CR>
 imap <C-f> <ESC>:pyf ~/.vim/clang-format.py<CR>i
 
 " everything for YCM completer
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>j :YcmCompleter GoTo<CR>
+nnoremap <leader>t :YcmCompleter GetType<CR>
 
 " own mappings
 :nnoremap <Leader>r :%s/<C-r><C-w>/<C-r><C-w>
@@ -166,9 +171,6 @@ let g:pymode_lint_ignore = "E501, C901"
 
 " startify
 let g:startify_files_number = 20
-
-" nerdtree_tabs config
-
 
 if has("autocmd")
   " enable detecting filetypes
