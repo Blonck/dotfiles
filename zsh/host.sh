@@ -1,9 +1,9 @@
-for config_file in ~/.zsh/host/$(hostname).sh
-do
-  source ${config_file}
-done
+if [ -f  ~/.zsh/host/$(hostname).sh ]
+then
+  source ~/.zsh/host/$(hostname).sh
+fi
 
-for config_file in ~/.zsh/host/$(hostname -d).sh
-do
-  source ${config_file}
-done
+if [ -f ~/.zsh/host/$(hostname -d).sh ]
+then
+  source ~/.zsh/host/$(hostname -d).sh
+fi
