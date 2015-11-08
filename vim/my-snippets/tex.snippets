@@ -4,13 +4,6 @@ extends texmath
 #                             OWN SNIPPTES                                #
 ###########################################################################
 
-snippet / "\\frac{}{} " i
-\frac{$1}{$2}
-endsnippet
-
-snippet < "\left\lange \right\rangle" i
-\left\langle $1 \right\rangle
-endsnippet
 
 snippet em "emphasize" i
 \emph{$1}
@@ -19,67 +12,6 @@ endsnippet
 snippet red "{\color{red }" i
 {\color{red} }
 endsnippet
-
-###########################################################################
-#                             GREEK ALPHABET                              #
-###########################################################################
-
-snippet ga "\\alpha" i
-\alpha
-endsnippet
-
-snippet gb "\\beta" i
-\beta
-endsnippet
-
-snippet gg "\\gamma" i
-\gamma
-endsnippet
-
-snippet ge "\\epsilon" i
-\epsilon
-endsnippet
-
-snippet gD "\\Delta" i
-\Delta
-endsnippet
-
-snippet gl "\\lambda" i
-\lambda
-endsnippet
-
-snippet gk "\\kappa" i
-\kappa
-endsnippet
-
-snippet gm "\\mu" i
-\mu
-endsnippet
-
-snippet gn "\\nu" i
-\nu
-endsnippet
-
-snippet gt "\\theta" i
-\theta
-endsnippet
-
-snippet gT "\\Theta" i
-\Theta
-endsnippet
-
-snippet gs "\\sigma" i
-\sigma
-endsnippet
-
-snippet gS "\\Sigma" i
-\Sigma
-endsnippet
-
-snippet gO "\\Omega" i
-\Omega
-endsnippet
-
 ###########################################################################
 #                             CHAR MODIFIER                               #
 ###########################################################################
@@ -126,18 +58,32 @@ snippet "b(egin)?" "begin{} / end{}" br
 endsnippet
 
 ####################
-# TABULARS, ARRAYS #
+# TABULARS, FIGURES #
 ####################
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
+		$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+\end{table}
+endsnippet
 
-snippet tab
-\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
-$0${2/((?<=.)c|l|r)|./(?1: & )/g}
-\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+snippet fig "Figure environment" b
+\begin{figure}[${2:htpb}]
+	\centering
+	\includegraphics[width=${3:0.8}\linewidth]{${4:name.ext}}
+	\caption{${4/(\w+)\.\w+/\u$1/}$0}
+	\label{fig:${4/(\w+)\.\w+/$1/}}
+	\end{figure}
 endsnippet
 
 ########################
 # ENUM, DESCR, ITEMIZE #
 ########################
+
 snippet enum "Enumerate" b
 \begin{enumerate}
 	\item $0
@@ -240,6 +186,10 @@ endsnippet
 
 snippet inc "includegraphics{}"
 \includegraphics[width=${1:0.9}\textwidth]{${2:${VISUAL}}}
+endsnippet
+
+snippet pac "Package" b
+\usepackage[${1:options}]{${2:package}}$0
 endsnippet
 
 # vim:ft=snippets:

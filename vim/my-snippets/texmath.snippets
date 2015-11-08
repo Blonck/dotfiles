@@ -23,9 +23,21 @@ snippet eqann "Equation array without numbers" b
 \begin{eqnarray*}
 	$1 & $2 & $0
 \end{eqnarray*}
-
 endsnippet
-snippet frac "Fraction" w
+
+snippet al "Align" b
+\begin{align}
+	$1
+\end{align}
+endsnippet
+
+snippet aln "Align without number" b
+\begin{align*}
+	$1
+\end{align*}
+endsnippet
+
+snippet / "Fraction" w
 \frac{${1:${VISUAL:nom}}}{${2:denom}}
 endsnippet
 
@@ -35,7 +47,7 @@ snippet mat "Smart Matrix"
 \end{$1matrix}
 endsnippet
 
-snippet ( "left( right)" w
+snippet ( "left( right)" i
 \left( ${1:${VISUAL}} \right)
 endsnippet
 
@@ -59,7 +71,7 @@ snippet "_" "_{}" r
 _{${1:${VISUAL}}}
 endsnippet
 
-snippet "\^" "^{}" r
+snippet "^" "^{}" r
 ^{${1:${VISUAL}}}
 endsnippet
 
@@ -75,22 +87,90 @@ snippet dt "\frac{d}{dT}" i
 \frac{d}{dT}
 endsnippet
 
+snippet ' "^{\prime}" i
+^{\prime}
+endsnippet
+
 snippet sum "\sum|limits" i
 \sum\limits
 endsnippet
 
+snippet -> "rightarrow" i
+\rightarrow
+endsnippet
+
+snippet -< "leftarrow" i
+\leftarrow
+endsnippet
+
 # greek letters
 
-snippet \l "\lambda" i
+snippet ga "\\alpha" i
+\alpha
+endsnippet
+
+snippet gA "\\Alpha" i
+\Alpha
+endsnippet
+
+snippet gb "\\beta" i
+\beta
+endsnippet
+
+snippet gB "\\Beta" i
+\Beta
+endsnippet
+
+snippet gg "\\gamma" i
+\gamma
+endsnippet
+
+snippet ge "\\epsilon" i
+\epsilon
+endsnippet
+
+snippet gd "\\delta" i
+\delta
+endsnippet
+
+snippet gD "\\Delta" i
+\Delta
+endsnippet
+
+snippet gl "\\lambda" i
 \lambda
 endsnippet
 
-snippet \k "\kappa" i
+snippet gk "\\kappa" i
 \kappa
 endsnippet
 
-snippet \T "\Theta" i
+snippet gm "\\mu" i
+\mu
+endsnippet
+
+snippet gn "\\nu" i
+\nu
+endsnippet
+
+snippet gt "\\theta" i
+\theta
+endsnippet
+
+snippet gT "\\Theta" i
 \Theta
+endsnippet
+
+snippet gs "\\sigma" i
+\sigma
+endsnippet
+
+snippet gS "\\Sigma" i
+\Sigma
+endsnippet
+
+snippet gO "\\Omega" i
+\Omega
 endsnippet
 
 # vim:ft=snippets:

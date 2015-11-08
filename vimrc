@@ -37,6 +37,7 @@ Plugin 'terryma/vim-expand-region.git'
 Plugin 'tpope/vim-obsession'
 " go suite
 Plugin 'fatih/vim-go'
+Plugin 'lervag/vimtex'
 
 Plugin 'LanguageTool'
 let g:languagetool_jar='~/bin/LanguageTool-3.0/languagetool-commandline.jar'
@@ -51,32 +52,30 @@ Plugin 'JuliaLang/julia-vim'
 call vundle#end()
 filetype plugin indent on " required!
 
-
 set backspace=2
-
-set hidden					" hide buffers instead of closing
-set nowrap					" don't wrap lines
-set tabstop=2				" a tab is four spaces
-set autoindent			" set autoindenting on
-set copyindent			" copy the previous indentation on autoindenting
-set shiftwidth=2 		" number of spaces for autoindenting
-set smarttab				" insert tabs, not tabstops
-set expandtab				" expand tabs to spaces
-set smartcase				" ignore case if pattern is all lowercase
-set number					" show line numbers
-set showmatch				" show matching paranthesis
-set hlsearch				" highliting search terms
-set incsearch				" incrementell search
-set history=1000 		" bigger search and commands history
-set undolevels=1000 " much more undo levels
+set hidden					            " hide buffers instead of closing
+set nowrap					            " don't wrap lines
+set tabstop=2				            " a tab is four spaces
+set autoindent			            " set autoindenting on
+set copyindent			            " copy the previous indentation on autoindenting
+set shiftwidth=2 		            " number of spaces for autoindenting
+set smarttab				            " insert tabs, not tabstops
+set expandtab				            " expand tabs to spaces
+set smartcase				            " ignore case if pattern is all lowercase
+set number					            " show line numbers
+set showmatch				            " show matching paranthesis
+set hlsearch				            " highliting search terms
+set incsearch				            " incrementell search
+set history=1000 		            " bigger search and commands history
+set undolevels=1000             " much more undo levels
 set wildignore=*.o,*.swp,*.pyc 	" ignoring file extensions
-set wildmode=list:full "complete word until longest match
+set wildmode=list:full          " complete word until longest match
 set visualbell
-set noerrorbells 		" don't beep
-set nobackup				" no backup files
-set browsedir=current		" which directory to use for
-set tags+=~/.vim/tags/cpp	" set tags directory
-set mouse=a					" enables mouse in all modes
+set noerrorbells 		            " don't beep
+set nobackup				            " no backup files
+set browsedir=current		        " which directory to use for
+set tags+=~/.vim/tags/cpp	      " set tags directory
+set mouse=a					            " enables mouse in all modes
 
 syntax enable
 set background=dark
@@ -92,8 +91,6 @@ set nospell
 highlight folded guibg=purple4 guifg=white
 set foldnestmax=3
 
-" change the mapleader to ,
-let mapleader=","
 
 " UltiSnips setting
 " make vim recognizing snippets dir
@@ -121,6 +118,9 @@ let g:nerdtree_tabns_open_on_new_tab=0
 " toggle background color
 call togglebg#map("<F6>")
 
+" change the mapleader to ,
+let mapleader=","
+
 " clang_format mapping
 map <C-f> :pyf ~/.vim/clang-format.py<CR>
 imap <C-f> <ESC>:pyf ~/.vim/clang-format.py<CR>i
@@ -137,8 +137,15 @@ nnoremap <leader>t :YcmCompleter GetType<CR>
 :inoremap <Leader>d <Esc>:tabprevious<CR><i>
 
 " expand regions
-map K <Plug>(expand_region_expand)
-map J <Plug>(expand_region_shrink)
+map b <Plug>(expand_region_expand)
+map B <Plug>(expand_region_shrink)
+
+augroup latex_macros " {
+  autocmd!
+  " LaTeX (rubber) macro
+  autocmd FileType tex :nnoremap <leader>c :w<CR>!rubber --pdf --warn all %<CR>
+  autocmd FileType tex :nnoremap <leader>v :!qpdfview %:r.pdf &<CR><CR>
+augroup END "}
 
 let g:ycm_warning_symbol = '@@'
 let g:ycm_always_populate_location_list = 1
@@ -172,6 +179,9 @@ let g:pymode_lint_ignore = "E501, C901"
 " startify
 let g:startify_files_number = 20
 
+" vimtex
+let g:vimtex_fold_automatic = 0
+
 if has("autocmd")
   " enable detecting filetypes
   filetype plugin indent on
@@ -179,6 +189,9 @@ if has("autocmd")
   " vimOrganizer
   au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
   au BufEnter *.org call org#SetOrgFileType()
+
+  " set gnuplot syntax for files ending with .plt
+  au BufRead,BufNewFile *.plt setfiletype gnuplot
 
   " set comment to doxystyle format
   au FileType c,cpp,hpp setlocal comments^=:///
