@@ -1,56 +1,50 @@
-" enables vundle
-set nocompatible " be iMproved
-filetype off     " required!
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/Vundle.vim'
-
-" My Plugins here:
-Plugin 'c.vim'
 " great snippet engine
-Bundle 'SirVer/UltiSnips'
-" vim integration
-Plugin 'tpope/vim-fugitive'
-" YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-" ultra complex python mode
-" Plugin 'klen/python-mode'
+Plug 'SirVer/UltiSnips'
+" git integration
+Plug 'tpope/vim-fugitive'
+" with branches
+Plug 'idanarye/vim-merginal'
 " checking for common style mistakes
-Plugin 'davidbeckingsale/writegood.vim'
-" handlw org mode files
-Plugin 'hsitz/VimOrganizer'
+Plug 'davidbeckingsale/writegood.vim'
 " change start screen of vim
-"Plugin 'vim-startify'
+Plug 'mhinz/vim-startify'
 " NERDTree with tabs
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 " coloscheme 
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " gundo
-Plugin 'sjl/gundo.vim'
-"expand regions
-Plugin 'terryma/vim-expand-region.git'
-" session plugin
-Plugin 'tpope/vim-obsession'
-" go suite
-Plugin 'fatih/vim-go'
-Plugin 'lervag/vimtex'
+Plug 'sjl/gundo.vim'
+" tex plugin
+Plug 'lervag/vimtex'
+" expand region
+Plug 'terryma/vim-expand-region'
+" CtrlP
+Plug 'kien/ctrlp.vim'
+" switch to header and back
+Plug 'vim-scripts/a.vim'
+" YouCompleteMe
+Plug 'Valloric/YouCompleteMe'
+" Language server plugin
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
-Plugin 'LanguageTool'
-let g:languagetool_jar='~/bin/LanguageTool-3.0/languagetool-commandline.jar'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
-" rust syntax highliting
-" Plugin 'wting/rust.vim'
-" Plugin 'hsitz/VimOrganizer'
-" Plugin 'Rip-Rip/clang_complete'
-" syntax for julia language
-Plugin 'JuliaLang/julia-vim'
-
-call vundle#end()
-filetype plugin indent on " required!
+call plug#end()
 
 set backspace=2
 set hidden					            " hide buffers instead of closing
@@ -69,6 +63,7 @@ set incsearch				            " incrementell search
 set history=1000 		            " bigger search and commands history
 set undolevels=1000             " much more undo levels
 set wildignore=*.o,*.swp,*.pyc 	" ignoring file extensions
+set wildignore+=*/.git/*        " ignore git folder
 set wildmode=list:full          " complete word until longest match
 set visualbell
 set noerrorbells 		            " don't beep
@@ -76,6 +71,7 @@ set nobackup				            " no backup files
 set browsedir=current		        " which directory to use for
 set tags+=~/.vim/tags/cpp	      " set tags directory
 set mouse=a					            " enables mouse in all modes
+set autoread                    " automatically refresh files
 
 syntax enable
 set background=dark
@@ -85,7 +81,6 @@ colorscheme solarized
 setlocal spell spelllang=en_us
 
 syntax spell toplevel
-set nospell
 
 " folding
 highlight folded guibg=purple4 guifg=white
@@ -107,11 +102,11 @@ let g:UltiSnipsJumpForwardTrigger='<C-j>'
 " go to previous snippet with Ctrl-k
 let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 
-" gundoToggle
-nnoremap <F5> :GundoToggle<CR>
-nnoremap <F4> :NERDTreeTabsToggle<CR>
 " nerdtee toggle
-map <Leader>m <plug>NERDTreeTabsToggle<CR>
+nnoremap <F4> :NERDTreeTabsToggle<CR>
+" merginal toggle
+nnoremap <F3> :MerginalToggle<CR>
+
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabns_open_on_new_tab=0
 
@@ -121,15 +116,12 @@ call togglebg#map("<F6>")
 " change the mapleader to ,
 let mapleader=","
 
-" clang_format mapping
-map <C-f> :pyf ~/.vim/clang-format.py<CR>
-imap <C-f> <ESC>:pyf ~/.vim/clang-format.py<CR>i
-
-" everything for YCM completer
-nnoremap <leader>j :YcmCompleter GoTo<CR>
-nnoremap <leader>t :YcmCompleter GetType<CR>
+" Git grep
+nnoremap <leader>g :Ggrep! <cword><CR>
 
 " own mappings
+:nnoremap <C-n> :cn <CR>
+:nnoremap <C-m> :lnext <CR>
 :nnoremap <Leader>r :%s/<C-r><C-w>/<C-r><C-w>
 :nnoremap <Leader>d :tabnext<CR>
 :nnoremap <Leader>a :tabprevious<CR>
@@ -137,22 +129,21 @@ nnoremap <leader>t :YcmCompleter GetType<CR>
 :inoremap <Leader>d <Esc>:tabprevious<CR><i>
 
 " expand regions
-map b <Plug>(expand_region_expand)
-map B <Plug>(expand_region_shrink)
+map <leader>b <Plug>(expand_region_expand)
+map <leader>B <Plug>(expand_region_shrink)
 
-augroup latex_macros " {
-  autocmd!
-  " LaTeX (rubber) macro
-  autocmd FileType tex :nnoremap <leader>c :w<CR>!rubber --pdf --warn all %<CR>
-  autocmd FileType tex :nnoremap <leader>v :!qpdfview %:r.pdf &<CR><CR>
-augroup END "}
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
+let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_warning_symbol = '@@'
 let g:ycm_always_populate_location_list = 1
 let g:ycm_allow_changing_updatetime = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_filetype_blacklist = {
+  \ 'cpp' : 1,
+  \ 'c' : 1,
   \ 'julia' : 1,
   \ 'text' : 1,
   \ 'mail' : 1,
@@ -165,49 +156,77 @@ let g:ycm_filetype_blacklist = {
   \ 'infolog' : 1
   \}
 
-" VimOrganizer settings
-let g:ft_irgnore_pat = '\.org'
-let g:org_command_for_emacsclient = 'emacsclient'
-
-" pymode options
-let g:pymode_lint_minheight = 3
-let g:pymode_lint_maxheight = 8
-let g:pymode_lint_mccabe_complexity = 10
-let g:pymode_lint_message = 1
-let g:pymode_lint_ignore = "E501, C901"
-
 " startify
 let g:startify_files_number = 20
 
 " vimtex
 let g:vimtex_fold_automatic = 0
 
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g_ctrlp_use_caching = 0
+endif
+
+"if executable('cquery')
+"   au User lsp_setup call lsp#register_server({
+"      \ 'name': 'cquery',
+"      \ 'cmd': {server_info->['cquery']},
+"      \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery' },
+"      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+"      \ })
+"endif
+
+let g:LanguageClient_serverCommands = {
+  \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+  \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+  \}
+let g:LanguageClient_loadSettings = 1
+
 if has("autocmd")
   " enable detecting filetypes
   filetype plugin indent on
 
-  " vimOrganizer
-  au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-  au BufEnter *.org call org#SetOrgFileType()
+  augroup latex_macros " {
+    autocmd!
+    " LaTeX (rubber) macro
+    autocmd FileType tex :nnoremap <leader>c :w<CR>!rubber --pdf --warn all %<CR>
+    autocmd FileType tex :nnoremap <leader>v :!qpdfview %:r.pdf &<CR><CR>
+  augroup END "}
 
   " set gnuplot syntax for files ending with .plt
   au BufRead,BufNewFile *.plt setfiletype gnuplot
 
+  " key mappings for c/c++
   " set comment to doxystyle format
   au FileType c,cpp,hpp setlocal comments^=:///
+  " clang_format mapping
+  au FileType c,cpp,hpp map <C-f> :py3f ~/.vim/clang-format.py<CR>
+  au FileType c,cpp,hpp imap <C-f> <ESC>:py3f ~/.vim/clang-format.py<CR>i
+  " toggle to header and back
+  au FileType c,cpp,hpp map <C-Tab> :A<CR>
+  " everything for YCM completer
+  au FileType c,cpp,hpp nnoremap <leader>j :call LanguageClient_textDocument_definition()<CR>
+  au FileType c,cpp,hpp nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
+  au FileType c,cpp,hpp nnoremap <leader>H :call LanguageClient_textDocument_workspace_symbol()<CR>
+  au FileType c,cpp,hpp nnoremap <leader>R :call LanguageClient_textDocument_rename()<CR>
+  au FileType c,cpp,hpp nnoremap <leader>l :call LanguageClient_textDocument_references() <CR> :lopen<CR>
+
 
   " when editing python files
   au FileType python setlocal tabstop=8 expandtab smarttab shiftwidth=4 softtabstop=4
-  au FileType python setlocal foldmethod=indent
+  "au FileType python setlocal foldmethod=indent
   au FileType python highlight Excess ctermbg=DarkGrey guibg=red
-  au FileType python match Excess /\%100v.*/
   au FileType python set nowrap
+  au FileType python nnoremap <leader>j :YcmCompleter GoTo<CR>
+  au FileType python nnoremap <leader>h :YcmCompleter GetType<CR>
 
   " Uncomment the following to have Vim jump to the last position when
   " reopening a file
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-  " The current directory is the directory of the file in the current window.
+  " set working directory to git root or dir of current file for all buffers
   autocmd BufEnter * if expand('%:p') !~ '://' | :lchdi %:p:h | endif
 
   " automatically open and close the popup menu / preview window

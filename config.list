@@ -1,5 +1,4 @@
 # the big things
-awesome_new	~/.config/awesome
 #emacs.d		~/.emacs.d
 #fluxbox		~/.fluxbox
 #screenrc		~/.screenrc
@@ -14,7 +13,7 @@ xscreensaver ~/.xscreensaver
 ssh_config	~/.ssh/config
 vim			    ~/.vim
 vimrc			  ~/.vimrc
-tmux        ~/.tmux
+#tmux        ~/.tmux
 tmux.conf   ~/.tmux.conf
 gvimrc      ~/.gvimrc
 gitconfig	 	~/.gitconfig

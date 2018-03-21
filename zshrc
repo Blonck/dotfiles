@@ -24,7 +24,13 @@ zstyle :compinstall filename '~/.zshrc'
 # own configurations
 #
 # completion menu with arrowkeys
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select list-colors "${(@s.:.)LS_COLORS}"
+
+# fix for slow git completion
+__git_files () {
+  _wanted files expl 'local files' _files
+}
+
 # 
 # arraowkeys -> history search
 bindkey "${terminfo[kcuu1]}" up-line-or-search
