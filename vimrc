@@ -49,10 +49,10 @@ call plug#end()
 set backspace=2
 set hidden					            " hide buffers instead of closing
 set nowrap					            " don't wrap lines
-set tabstop=2				            " a tab is four spaces
+set tabstop=4				            " a tab is four spaces
 set autoindent			            " set autoindenting on
 set copyindent			            " copy the previous indentation on autoindenting
-set shiftwidth=2 		            " number of spaces for autoindenting
+set shiftwidth=4 		            " number of spaces for autoindenting
 set smarttab				            " insert tabs, not tabstops
 set expandtab				            " expand tabs to spaces
 set smartcase				            " ignore case if pattern is all lowercase
@@ -78,14 +78,16 @@ set background=dark
 colorscheme solarized
 
 " spell
+set nospell
 setlocal spell spelllang=en_us
-
-syntax spell toplevel
 
 " folding
 highlight folded guibg=purple4 guifg=white
 set foldnestmax=3
 
+" list trailing spaces and tabs
+set listchars=tab:▸\ ,trail:·
+set list
 
 " UltiSnips setting
 " make vim recognizing snippets dir
