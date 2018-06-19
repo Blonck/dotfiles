@@ -7,8 +7,8 @@ export LS_COLORS='ow=01;36;40'
 export PATH=${PATH}:~/.cargo/bin:~/local/bin
 
 # ttg proxies
-export http_proxy=http://83.133.69.81:3128
-export https_proxy=http://83.133.69.81:3128
+# export http_proxy=http://83.133.69.81:3128
+# export https_proxy=http://83.133.69.81:3128
 
 export project='/mnt/d/Projects/'
 export datf='/mnt/d/Projects/devices-automated-test-framework/'

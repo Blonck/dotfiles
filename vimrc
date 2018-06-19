@@ -36,44 +36,39 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 call plug#end()
 
 set backspace=2
-set hidden					            " hide buffers instead of closing
-set nowrap					            " don't wrap lines
-set tabstop=4				            " a tab is four spaces
-set autoindent			            " set autoindenting on
-set copyindent			            " copy the previous indentation on autoindenting
-set shiftwidth=4 		            " number of spaces for autoindenting
-set smarttab				            " insert tabs, not tabstops
-set expandtab				            " expand tabs to spaces
-set smartcase				            " ignore case if pattern is all lowercase
-set number					            " show line numbers
-set showmatch				            " show matching paranthesis
-set hlsearch				            " highliting search terms
-set incsearch				            " incrementell search
-set history=1000 		            " bigger search and commands history
-set undolevels=1000             " much more undo levels
-set wildignore=*.o,*.swp,*.pyc 	" ignoring file extensions
-set wildignore+=*/.git/*        " ignore git folder
-set wildmode=list:full          " complete word until longest match
+set hidden                              " hide buffers instead of closing
+set nowrap                              " don't wrap lines
+set tabstop=4                           " a tab is four spaces
+set autoindent                          " set autoindenting on
+set copyindent                          " copy the previous indentation on autoindenting
+set shiftwidth=4                        " number of spaces for autoindenting
+set smarttab                            " insert tabs, not tabstops
+set expandtab                           " expand tabs to spaces
+set smartcase                           " ignore case if pattern is all lowercase
+set number                              " show line numbers
+set showmatch                           " show matching parenthesis
+set hlsearch                            " highlighting search terms
+set incsearch                           " incremental search
+set history=1000                        " bigger search and commands history
+set undolevels=1000                     " much more undo levels
+set wildignore=*.o,*.swp,*.pyc          " ignoring file extensions
+set wildignore+=*/.git/*                " ignore git folder
+set wildmode=list:full                  " complete word until longest match
 set visualbell
-set noerrorbells 		            " don't beep
-set nobackup				            " no backup files
-set browsedir=current		        " which directory to use for
-set tags+=~/.vim/tags/cpp	      " set tags directory
-set mouse=a					            " enables mouse in all modes
-set autoread                    " automatically refresh files
+set noerrorbells                        " don't beep
+set nobackup                            " no backup files
+set browsedir=current                   " which directory to use for
+set tags+=~/.vim/tags/cpp               " set tags directory
+set mouse=a                             " enables mouse in all modes
+set autoread                            " automatically refresh files
 
-syntax enable
 set background=dark
 colorscheme solarized
 
@@ -123,7 +118,6 @@ nnoremap <leader>g :Ggrep! <cword><CR>
 
 " own mappings
 :nnoremap <C-n> :cn <CR>
-:nnoremap <C-m> :lnext <CR>
 :nnoremap <Leader>r :%s/<C-r><C-w>/<C-r><C-w>
 :nnoremap <Leader>d :tabnext<CR>
 :nnoremap <Leader>a :tabprevious<CR>
@@ -217,7 +211,7 @@ if has("autocmd")
 
 
   " when editing python files
-  au FileType python setlocal tabstop=8 expandtab smarttab shiftwidth=4 softtabstop=4
+  au FileType python setlocal tabstop=4 expandtab smarttab shiftwidth=4 softtabstop=4
   "au FileType python setlocal foldmethod=indent
   au FileType python highlight Excess ctermbg=DarkGrey guibg=red
   au FileType python set nowrap
