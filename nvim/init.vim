@@ -24,6 +24,8 @@ Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-expand-region'
 " CtrlP
 Plug 'kien/ctrlp.vim'
+" vim-grepper
+Plug 'mhinz/vim-grepper'
 " switch to header and back
 Plug 'vim-scripts/a.vim'
 " Language server plugin
@@ -31,9 +33,11 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+" Plugin for jupyter
+Plug 'szymonmaszke/vimpyter' "vim-plug
+" Plugin for multi cursor select
+Plug 'terryma/vim-multiple-cursors'
 
-"Plug 'roxma/nvim-completion-manager'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -64,8 +68,10 @@ set mouse=a                             " enables mouse in all modes
 set autoread                            " automatically refresh files
 
 syntax enable
-set background=dark
+
 colorscheme solarized
+let g:solarized_termcolors=256
+set background=dark
 
 " spell
 set nospell
@@ -95,9 +101,6 @@ let g:UltiSnipsJumpForwardTrigger='<C-j>'
 let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 let g:UltiSnipsEnableSnipMate = 0
 
-" for ultisnips
-let g:deoplete#enable_at_startup = 1
-"call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 " Let <Tab> also do completion
 inoremap <silent><expr><Tab>  pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<Tab>"
@@ -116,9 +119,6 @@ call togglebg#map("<F6>")
 " change the mapleader to ,
 let mapleader=","
 
-" Git grep
-nnoremap <leader>g :Ggrep! <cword><CR>
-
 " own mappings
 :nnoremap <C-n> :cnext <CR>
 :nnoremap <C-j> :lnext <CR>
@@ -135,44 +135,39 @@ nnoremap <leader>g :Ggrep! <cword><CR>
 map <leader>b <Plug>(expand_region_expand)
 map <leader>B <Plug>(expand_region_shrink)
 
-"let g:ycm_python_binary_path = '/usr/bin/python3'
-"let g:ycm_warning_symbol = '@@'
-"let g:ycm_always_populate_location_list = 1
-"let g:ycm_allow_changing_updatetime = 1
-"let g:ycm_complete_in_comments = 1
-"let g:ycm_collect_identifiers_from_comments_and_strings = 1
-"let g:ycm_filetype_blacklist = {
-"  \ 'cpp' : 1,
-"  \ 'c' : 1,
-"  \ 'julia' : 1,
-"  \ 'text' : 1,
-"  \ 'mail' : 1,
-"  \ 'markdown' : 1,
-"  \ 'tagbar' : 1,
-"  \ 'qf' : 1,
-"  \ 'vimwiki' : 1,
-"  \ 'unite' : 1,
-"  \ 'notes' : 1,
-"  \ 'infolog' : 1
-"  \}
-
 " startify
 let g:startify_files_number = 20
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ --no-heading
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g_ctrlp_use_caching = 0
+  let g:ctrlp_use_caching = 0
 endif
 
-if executable('cquery')
-  let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
-    \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
-    \}
-  let g:LanguageClient_loadSettings = 1
-  let g:LanguageClient_settingsPath = '/home/marenz/.config/nvim/settings.json'
+runtime plugin/grepper.vim
+let g:grepper.dir = 'repo,file'
+let g:grepper.tool = ['rg', 'git', 'grep']
+" location list with default height 10
+let g:grepper.quickfix = 0
+"let g:grepper = {'open': 0}
+"autocmd User Grepper lopen
+
+if executable('rg')
+    nnoremap <leader>g :Grepper -tool rg -cword -noprompt<cr>
+else
+    nnoremap <leader>g :Grepper -cword<cr>
+endif
+
+let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_settingsPath = '/home/marenz/.config/nvim/settings.json'
+let g:LanguageClient_diagnosticsList = 'Quickfix'
+if executable('ccls')
+  let g:LanguageClient_serverCommands.cpp = ['ccls', '--log-file=/tmp/ccls.log']
+  let g:LanguageClient_serverCommands.c = ['ccls', '--log-file=/tmp/ccls.log']
+  let g:LanguageCleint_hasSnippterSupport = 0
+endif
+if executable('pyls')
+  let g:LanguageClient_serverCommands.python = ['pyls']
 endif
 
 if has("autocmd")
@@ -193,16 +188,16 @@ if has("autocmd")
   " set comment to doxystyle format
   au FileType c,cpp,hpp setlocal comments^=:///
   " clang_format mapping
-  au FileType c,cpp,hpp map <C-f> :py3f ~/local/share/clang/clang-format.py<CR>
-  au FileType c,cpp,hpp imap <C-f> <ESC> :py3f ~/local/share/clang/clang-format.py<CR>i
+  au FileType c,cpp,hpp map <C-f> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+  au FileType c,cpp,hpp imap <C-f> <ESC> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>i
   " toggle to header and back
   au FileType c,cpp,hpp map <C-Tab> :A<CR>
   " everything for YCM completer
-  au FileType c,cpp,hpp nnoremap <leader>j :call LanguageClient_textDocument_definition()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>H :call LanguageClient_textDocument_workspace_symbol()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>R :call LanguageClient_textDocument_rename()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>l :call LanguageClient_textDocument_references() <CR>
+  au FileType c,cpp,hpp,python nnoremap <leader>j :call LanguageClient_textDocument_definition()<CR>
+  au FileType c,cpp,hpp,python nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
+  au FileType c,cpp,hpp,python nnoremap <leader>H :call LanguageClient_textDocument_workspace_symbol()<CR>
+  au FileType c,cpp,hpp,python nnoremap <leader>R :call LanguageClient_textDocument_rename()<CR>
+  au FileType c,cpp,hpp,python nnoremap <leader>l :call LanguageClient_textDocument_references()<CR>
 
 
   " when editing python files
