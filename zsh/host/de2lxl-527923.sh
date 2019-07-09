@@ -15,3 +15,9 @@ use_conda ()
     fi
     unset __conda_setup
 }
+
+use_pyside ()
+{
+    use_conda
+    conda activate pyside
+}
