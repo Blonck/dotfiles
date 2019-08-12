@@ -148,6 +148,8 @@ call plug#end()
 " }}}
 
 " coc {{{
+    let g:coc_global_extensions = ['coc-ultisnips', 'coc-json', 'coc-python', 'coc-word']
+
     " use <tab> for trigger completion and navigate to the next complete item
     function! s:check_back_space() abort
       let col = col('.') - 1
