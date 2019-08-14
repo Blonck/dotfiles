@@ -92,6 +92,12 @@ call plug#end()
     " toggle background color
     call togglebg#map("<F6>")
 
+    " Removes trailing spaces
+    function TrimWhiteSpace()
+        %s/\s*$//
+        ''
+    endfunction
+
     " own mappings
     :nnoremap <C-n> :cnext <CR>
     :nnoremap <C-j> :lnext <CR>
@@ -100,6 +106,8 @@ call plug#end()
     :nnoremap <Leader>a :tabprevious<CR>
     :inoremap <Leader>a <Esc>:tabnext<CR><i>
     :inoremap <Leader>d <Esc>:tabprevious<CR><i>
+    :nnoremap <Leader>w :call TrimWhiteSpace()<CR>
+    :inoremap <Leader>w <Esc>:call TrimWhiteSpace()<CR><i>
 
     " use <ESC> to exit terminal mode
     :tnoremap <Esc> <C-\><C-n>
