@@ -242,6 +242,8 @@ call plug#end()
     " set gnuplot syntax for files ending with .plt
     au BufRead,BufNewFile *.plt setfiletype gnuplot
 
+    au! BufNewFile,BufRead Dvcfile,*.dvc setfiletype yaml
+
     augroup latex_macros " {
       autocmd!
       " LaTeX (rubber) macro
