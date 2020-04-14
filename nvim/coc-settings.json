@@ -15,5 +15,7 @@
        "filetypes": ["dockerfile"],
        "args": ["--stdio"]
      }
-   }
+   },
+   "python.jediEnabled": false,
+   "python.linting.pylamaEnabled": true
 }

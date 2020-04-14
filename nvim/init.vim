@@ -18,7 +18,7 @@ Plug 'mhinz/vim-startify'
 " NERDTree with tabs
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-" coloscheme 
+" coloscheme
 Plug 'altercation/vim-colors-solarized'
 " gundo
 Plug 'sjl/gundo.vim'
@@ -36,6 +36,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'szymonmaszke/vimpyter' "vim-plug
 " Plugin for multi cursor select
 Plug 'terryma/vim-multiple-cursors'
+" Plugin for julia
+Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
 
@@ -62,7 +64,7 @@ call plug#end()
     set mouse=a                             " enables mouse in all modes
     set updatetime=300                      " for coc diagnostic messages
     set complete =.,w,b,u,k,t
-    set completeopt=menu,longest,preview
+    set completeopt=longest,menuone,preview
 
     syntax enable
 
@@ -156,6 +158,8 @@ call plug#end()
 " }}}
 
 " coc {{{
+    set statusline^=%{coc#status()}
+
     let g:coc_global_extensions = ['coc-ultisnips', 'coc-json', 'coc-python', 'coc-word']
 
     " use <tab> for trigger completion and navigate to the next complete item
