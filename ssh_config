@@ -1,62 +1,7 @@
 HashKnownHosts no
 
-Host juropa
-        HostName  juropa.fz-juelich.de
-        User      hlz212
-        ForwardAgent yes
-        CheckHostIP yes
-        Compression yes
-        ForwardX11  yes
-        ForwardX11Trusted yes
 
-Host mona
-        HostName 192.168.130.25
-        User marenz
-        ForwardAgent yes
-        CheckHostIP yes
-        Compression yes
-        ForwardX11 yes
-        ForwardX11Trusted yes
-
-Host grawp
-        HostName grawp.physik.uni-leipzig.de
-        User marenz
-        ForwardAgent yes
-        CheckHostIP yes
-        Compression yes
-        ForwardX11 yes
-        ForwardX11Trusted yes
-
-Host diamant
-      HostName diamant.physik.uni-leipzig.de
-      ForwardAgent yes
-      User root
-      CheckHostIP yes
-
-Host ldap
-      HostName ldap.physik.uni-leipzig.de
-      ForwardAgent yes
-      User root
-      CheckHostIP yes
-
-Host nfs
-      HostName nfs.physik.uni-leipzig.de
-      ForwardAgent yes
-      User root
-      CheckHostIP yes
-
-Host *.physik.uni-leipzig.de
-      User marenz
-      ForwardAgent yes
-      CheckHostIP yes
-      Compression yes
-      ForwardX11 yes
-      ForwardX11Trusted yes
-
-Host *
-      User marenz
-      ForwardAgent yes
-      CheckHostIP yes
-      Compression yes
-      ForwardX11 yes
-      ForwardX11Trusted yes
+Host data-minion-2020.dev.ttw
+    HostName data-minion-2020.dev.ttw
+    #ProxyCommand /usr/bin/corkscrew proxy.dev.ttw 3128 %h %p
+    User marenz
