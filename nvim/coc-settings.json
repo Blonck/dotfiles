@@ -16,6 +16,9 @@
        "args": ["--stdio"]
      }
    },
-   "python.jediEnabled": false,
-   "python.linting.pylamaEnabled": true
+   "python.linting.enabled": true,
+   "python.linting.flake8Enabled": true,
+   "python.formatting.provider": "yapf",
+   "pyright.disableSelfClsNotAccessed": true,
+   "diagnostic.level": "information"
 }
