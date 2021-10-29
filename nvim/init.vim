@@ -127,7 +127,7 @@ call plug#end()
 " UltiSnips {{{
     "" use different snippets dir
     let g:UltiSnipsSnippetsDir=$HOME.'/dotfiles/vim/my-snippets'
-    let g:UltiSnipsSnippetDirectories=['my-snippets', $HOME.'/dotfiles/vim/my-snippets']
+    let g:UltiSnipsSnippetDirectories=[$HOME.'/dotfiles/vim/my-snippets']
     " use vertical split to edit snippets
     let g:UltiSnipsEditSplit='vertical'
     " trigger snippet with Ctrl-L
@@ -160,7 +160,7 @@ call plug#end()
 " coc {{{
     set statusline^=%{coc#status()}
 
-    let g:coc_global_extensions = ['coc-ultisnips', 'coc-json', 'coc-python', 'coc-word']
+    let g:coc_global_extensions = ['coc-ultisnips', 'coc-json', 'coc-python', 'coc-word', 'coc-clangd', 'coc-rust-analyzer']
 
     " use <tab> for trigger completion and navigate to the next complete item
     function! s:check_back_space() abort
@@ -197,6 +197,7 @@ call plug#end()
     " formatting
     xmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>F  <Plug>(coc-format)
     " Use `:Format` to format current buffer
     command! -nargs=0 Format :call CocAction('format')
     " Use `:Fold` to fold current buffer
@@ -263,3 +264,13 @@ call plug#end()
       autocmd FileType tex :nnoremap <leader>v :!qpdfview %:r.pdf &<CR><CR>
     augroup END "}
 """ }
+
+
+" WSL {{{
+    if system('uname -r') =~ "Microsoft"
+      augroup Yank
+       autocmd!
+       autocmd TextYankPost * :call system('clip.exe ',@")
+      augroup END
+    endif   
+" }}}

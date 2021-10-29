@@ -1,21 +1,27 @@
 {
-   "languageserver": {
-     "ccls": {
-       "command": "ccls",
-       "filetypes": ["c", "cpp", "objc", "objcpp"],
-       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-       "initializationOptions": {
-          "cache": {
-            "directory": "/tmp/ccls"
-          }
-       }
-     },
-     "dockerfile": {
-       "command": "docker-langserver",
-       "filetypes": ["dockerfile"],
-       "args": ["--stdio"]
-     }
-   },
-   "python.jediEnabled": false,
-   "python.linting.pylamaEnabled": true
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "rust": {
+     "command": "rust-analyzer",
+     "filetypes": ["rust"],
+     "rootPatterns": ["Cargo.toml"]
+    }
+  },
+  "python.jediEnabled": false,
+  "python.linting.pylamaEnabled": true,
+  "clangd.path": "/home/marenz/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
 }

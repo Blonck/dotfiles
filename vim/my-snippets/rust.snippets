@@ -1,0 +1,132 @@
+#######################################################################
+#                            Rust Snippets                            #
+#######################################################################
+
+priority -50
+
+snippet fn "fn name(?) -> ? {}"
+fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet new "fn new() -> Self {}"
+fn new($1) -> Self {
+	Self {
+		${VISUAL}$0
+	}
+}
+endsnippet
+
+snippet pnew "fn new() -> Self {}"
+fn new($1) -> Self {
+	Self {
+		${VISUAL}$0
+	}
+}
+endsnippet
+
+snippet pfn "pub fn name(?) -> ? {}"
+pub fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet afn "async fn name(?) -> ? {}"
+async fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet pafn "pub async fn name(?) -> ? {}"
+pub async fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet pri "print!(..)" b
+print!("$1"${2/..*/, /}$2);
+endsnippet
+
+snippet pln "println!(..)" b
+println!("$1"${2/..*/, /}$2);
+endsnippet
+
+snippet fmt "format!(..)"
+format!("$1"${2/..*/, /}$2);
+endsnippet
+
+snippet .it ".iter()" i
+.iter()$0
+endsnippet
+
+# variable
+
+snippet v "variable: Type" i
+${1:variable}: ${2:Type}
+endsnippet
+
+snippet vr "variable: Type" i
+${1:variable}: &${2:Type}
+endsnippet
+
+snippet vrm "variable: Type" i
+${1:variable}: &mut ${2:Type}
+endsnippet
+
+# let
+
+snippet ifl "if let Some(x)"
+if let ${1:Some($2)} = $3 {
+	${VISUAL}$0
+}
+endsnippet
+
+#loops
+snippet for "for int loop (fori)"
+for ${1} in ${2:start}..${3:end} {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for iter()"
+for ${4} in ${1:iterable}${2:.iter()}${3:.enumerate()} {
+	${VISUAL}$0
+}
+endsnippet
+
+# struct
+
+snippet st "struct ... (struct)"
+struct ${1:name} {
+	${0}
+}
+endsnippet
+
+# match
+
+snippet ma "match ... (match)"
+match ${1:expression} {
+	${2:pattern} => ${3:expression},
+	${4:pattern} => ${5:expression},
+	${VISUAL}${6:${VISUAL/(.*)/_/}} => ${0:expression},
+}
+endsnippet
+
+# implementation
+
+snippet impl "Struct implementation" b
+impl $1 ${2: for ${3:Type}
+    ${0}
+}
+endsnippet
+
+snippet timpl "Trait implementation" b
+impl$4 ${1:Type/Trait}${2: for ${3:Type}}${4:<${5:T}>} {
+	${0}
+}
+endsnippet
+
+
+
+# vim:ft=snippets:
