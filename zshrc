@@ -50,7 +50,3 @@ bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/marenz/.sdkman"
-[[ -s "/home/marenz/.sdkman/bin/sdkman-init.sh" ]] && source "/home/marenz/.sdkman/bin/sdkman-init.sh"

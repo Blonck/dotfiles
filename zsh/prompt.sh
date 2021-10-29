@@ -12,7 +12,7 @@ _git_repo_name() {
 
 _git_branch_name() {    
     git branch 2>/dev/null | awk '/^\*/ { print $2 }'
-}    
+}
 
 _git_is_dirty() { 
    git diff --quiet 2> /dev/null || echo '*'
@@ -35,4 +35,3 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-
