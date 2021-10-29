@@ -23,5 +23,7 @@
   },
   "python.jediEnabled": false,
   "python.linting.pylamaEnabled": true,
+  "pyright.disableSelfClsNotAccessed": true,
+  "diagnostic.level": "information",
   "clangd.path": "/home/marenz/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
 }

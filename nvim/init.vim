@@ -20,6 +20,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 " coloscheme
 Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim'
 " gundo
 Plug 'sjl/gundo.vim'
 " expand region
@@ -38,6 +39,15 @@ Plug 'szymonmaszke/vimpyter' "vim-plug
 Plug 'terryma/vim-multiple-cursors'
 " Plugin for julia
 Plug 'JuliaEditorSupport/julia-vim'
+" Treesitter
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" telescope
+" dependencies
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" session support
+Plug 'tpope/vim-obsession'
 
 call plug#end()
 
@@ -65,6 +75,7 @@ call plug#end()
     set updatetime=300                      " for coc diagnostic messages
     set complete =.,w,b,u,k,t
     set completeopt=longest,menuone,preview
+    set clipboard+=unnamedplus
 
     syntax enable
 
@@ -88,6 +99,8 @@ call plug#end()
 
     " change the mapleader to ,
     let mapleader=","
+
+    let maplocalleader="\\"
 " }}}
 
 " general mappings {{{
@@ -110,6 +123,11 @@ call plug#end()
     :inoremap <Leader>d <Esc>:tabprevious<CR><i>
     :nnoremap <Leader>w :call TrimWhiteSpace()<CR>
     :inoremap <Leader>w <Esc>:call TrimWhiteSpace()<CR><i>
+    :inoremap <Leader>w <Esc>:call TrimWhiteSpace()<CR><i>
+    " yank from system buffer
+    :nnoremap <leader>y "+y <CR>
+    " paste into system buffer
+    :nnoremap <leader>p "+gP <CR>
 
     " use <ESC> to exit terminal mode
     :tnoremap <Esc> <C-\><C-n>
@@ -119,9 +137,39 @@ call plug#end()
     " merginal toggle
     nnoremap <F3> :Twiggy<CR>
 
+    " Telescope
+    nnoremap <leader>ff <cmd>Telescope git_files show_untracked=false<cr>
+    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+    nnoremap <leader>fs <cmd>Telescope current_buffer_fuzzy_find<cr>
+
+    nmap <silent> <leader>j <Plug>(coc-definition)
+    nmap <leader>l <Plug>(coc-references)
+    " <leader>r is already used for replacing the name
+    nmap <leader>R <Plug>(coc-rename)
+    nmap <leader>s :<C-u>CocList -I symbols<CR>
+    nnoremap <leader>h :call <SID>show_documentation()<CR>
+    " formatting
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
     " expand regions
     map <leader>b <Plug>(expand_region_expand)
     map <leader>B <Plug>(expand_region_shrink)
+    " code action
+    nmap <leader>qc <Plug>(coc-codeaction)
+    nmap <leader>qf <Plug>(coc-fix-current)
+    nmap <leader>qi :CocCommand pyright.organizeimports<CR>
+    nmap <leader>qr :CocCommand pyright.restartserver<CR>
+
+    nnoremap <silent><nowait> <space>e  :<C-u>CocDiagnostic<cr>
+    nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+    nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+    nnoremap <silent><nowait> <space>z  :<C-u>Telescope spell_suggest<cr>
+    nnoremap <silent><nowait> <space>cc  :<C-u>Telescope command_history<cr>
+
+    nmap <leader>gs :Gstatus<CR>
+    nmap <leader>gl :Gclog<CR>
 " }}}
 
 " UltiSnips {{{
