@@ -28,17 +28,6 @@ Plug 'terryma/vim-expand-region'
 Plug 'kien/ctrlp.vim'
 " switch to header and back
 Plug 'vim-scripts/a.vim'
-" YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
-" Language server plugin
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 
 call plug#end()
 
@@ -128,30 +117,6 @@ nnoremap <leader>g :Ggrep! <cword><CR>
 map <leader>b <Plug>(expand_region_expand)
 map <leader>B <Plug>(expand_region_shrink)
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_warning_symbol = '@@'
-let g:ycm_always_populate_location_list = 1
-let g:ycm_allow_changing_updatetime = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_filetype_blacklist = {
-  \ 'cpp' : 1,
-  \ 'c' : 1,
-  \ 'julia' : 1,
-  \ 'text' : 1,
-  \ 'mail' : 1,
-  \ 'markdown' : 1,
-  \ 'tagbar' : 1,
-  \ 'qf' : 1,
-  \ 'vimwiki' : 1,
-  \ 'unite' : 1,
-  \ 'notes' : 1,
-  \ 'infolog' : 1
-  \}
-
 " startify
 let g:startify_files_number = 20
 
@@ -197,17 +162,8 @@ if has("autocmd")
   " key mappings for c/c++
   " set comment to doxystyle format
   au FileType c,cpp,hpp setlocal comments^=:///
-  " clang_format mapping
-  au FileType c,cpp,hpp map <C-f> :py3f ~/.vim/clang-format.py<CR>
-  au FileType c,cpp,hpp imap <C-f> <ESC>:py3f ~/.vim/clang-format.py<CR>i
   " toggle to header and back
   au FileType c,cpp,hpp map <C-Tab> :A<CR>
-  " everything for YCM completer
-  au FileType c,cpp,hpp nnoremap <leader>j :call LanguageClient_textDocument_definition()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>H :call LanguageClient_textDocument_workspace_symbol()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>R :call LanguageClient_textDocument_rename()<CR>
-  au FileType c,cpp,hpp nnoremap <leader>l :call LanguageClient_textDocument_references() <CR> :lopen<CR>
 
 
   " when editing python files
@@ -215,8 +171,6 @@ if has("autocmd")
   "au FileType python setlocal foldmethod=indent
   au FileType python highlight Excess ctermbg=DarkGrey guibg=red
   au FileType python set nowrap
-  au FileType python nnoremap <leader>j :YcmCompleter GoTo<CR>
-  au FileType python nnoremap <leader>h :YcmCompleter GetType<CR>
 
   " Uncomment the following to have Vim jump to the last position when
   " reopening a file
