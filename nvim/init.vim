@@ -33,8 +33,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'vim-scripts/a.vim'
 " Language server plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plugin for jupyter
-Plug 'szymonmaszke/vimpyter' "vim-plug
+" REPL plugin for jupyter notebooks
+Plug 'luk400/vim-jukit'
 " Plugin for multi cursor select
 Plug 'terryma/vim-multiple-cursors'
 " Plugin for julia
@@ -170,6 +170,9 @@ call plug#end()
 
     nmap <leader>gs :Gstatus<CR>
     nmap <leader>gl :Gclog<CR>
+
+    " terminal mappings
+    :tnoremap <Esc> <C-\><C-n>
 " }}}
 
 " UltiSnips {{{
