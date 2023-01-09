@@ -35,6 +35,35 @@ vim.keymap.set("n", "<F4>", ":NvimTreeToggle<CR>", opts)
 vim.keymap.set("n", "<F3>", ":Twiggy<CR>", opts)
 
 
+-- lsp
+lsp_on_attach = function(client, bufnr)
+    local opts = { noremap=true, silent=true, buffer=bufnr }
+
+    vim.keymap.set('n', '<leader>j', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>l', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
+--[[
+    nmap <leader>l <Plug>(coc-references)
+    " <leader>r is already used for replacing the name
+    nmap <leader>s :<C-u>CocList -I symbols<CR>
+    " formatting
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+    " code action
+    nmap <leader>qc <Plug>(coc-codeaction)
+    nmap <leader>qf <Plug>(coc-fix-current)
+    nmap <leader>qi :CocCommand pyright.organizeimports<CR>
+    nmap <leader>qr :CocCommand pyright.restartserver<CR>
+
+    nnoremap <silent><nowait> <space>e  :<C-u>CocDiagnostic<cr>
+    nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+    nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+--]]
+end
+
 -- telescope
 local builtin = require('telescope.builtin')
 
@@ -46,6 +75,20 @@ vim.keymap.set("n", "<leader>fd", builtin.diagnostics, opts)
 vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, opts)
 vim.keymap.set("n", "<silent><nowait> <space>z", builtin.spell_suggest, opts)
 vim.keymap.set("n", "<silent><nowait> <space>cc", builtin.command_history, opts)
+
+-- floaterm
+
+vim.keymap.set("n", "<leader>tn", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose bash <CR>", opts)
+vim.keymap.set("n", "<leader>tp", ":FloatermNew! --height=0.8 --width=0.7 python <CR>", opts)
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>:q<CR>")
+vim.keymap.set("n", "<F5>", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose bash <CR>", opts)
+vim.keymap.set("t", "<F5>", [[<C-\><C-n>:FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose bash <CR>]], opts)
+vim.keymap.set("n", "<F6>", ":FloatermPrev<CR>", opts)
+vim.keymap.set("t", "<F6>", [[<C-\><C-n>:FloatermPrev<CR>]], opts) 
+vim.keymap.set("n", "<F7>", ":FloatermNext<CR>", opts)
+vim.keymap.set("t", "<F7>", [[<C-\><C-n>:FloatermNext<CR>]], opts) 
+vim.keymap.set("n", "<F8>", ":FloatermToggle<CR>", opts)
+vim.keymap.set("t", "<F8>", [[<C-\><C-n>:FloatermToggle<CR>]], opts) 
 
 --[[
 --
