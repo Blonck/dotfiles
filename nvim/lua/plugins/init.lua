@@ -5,11 +5,13 @@ return require('packer').startup(function(use)
 
     use 'mhinz/vim-startify'
 
+    use     'davidbeckingsale/writegood.vim'
+
+    -- file browser
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-tree/nvim-tree.lua'
 
-    use 'davidbeckingsale/writegood.vim'
-
+    -- fuzzy finding files
     use 'kien/ctrlp.vim'
 
     -- lsp
@@ -42,4 +44,19 @@ return require('packer').startup(function(use)
 
     -- floating terminal
     use 'voldikss/vim-floaterm'
+
+
+    --use({
+    --    "jackMort/ChatGPT.nvim",
+    --    config = function()
+    --        require("chatgpt").setup({
+    --        -- optional configuration
+    --        })
+    --    end,
+    --    requires = {
+    --    "MunifTanjim/nui.nvim",
+    --    "nvim-lua/plenary.nvim",
+    --    "nvim-telescope/telescope.nvim"
+    --}
+    --})
 end)
