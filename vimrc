@@ -58,8 +58,8 @@ set tags+=~/.vim/tags/cpp               " set tags directory
 set mouse=a                             " enables mouse in all modes
 set autoread                            " automatically refresh files
 
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 " spell
 set nospell
