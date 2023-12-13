@@ -1,15 +1,15 @@
-require('settings')
+require('core/lazy')
+require('core/options')
+require('core/mappings')
 
-require('plugins')
-require('plugins.nvim-tree-config')
-require('plugins.ultisnips-config')
-require('plugins.mason-config')
-require('plugins.nvim-treesitter-config')
-require('plugins.telescope-config')
+require('plugins/nvim-tree')
+require('plugins/nvim-treesitter')
+require('plugins/telescope')
+require('plugins/toggleterm')
+require('plugins/ultisnips')
 
 require('lsp-config')
 require('lsp-config.completion')
-require('mappings')
 
--- load colorscheme
-require('nightfox').load('nordfox')
+---- load colorscheme
+--require('nightfox').load('nordfox')

@@ -1,5 +1,6 @@
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- setup lsp config
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- lsp
 local on_attach = function(client, bufnr)
@@ -13,15 +14,26 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
 end
 
-require('lspconfig')['pyright'].setup{
+local root_patterns = { ".git", ".clang-format", "pyproject.toml", "setup.py" }
+local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
+
+local lspconfig = require('lspconfig')
+
+lspconfig['pyright'].setup{
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
 }
 
-require('lspconfig')['rust_analyzer'].setup{
+lspconfig['rust_analyzer'].setup{
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
       ["rust-analyzer"] = {}
     }
+}
+
+lspconfig['clangd'].setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {"c", "cpp", "cuda", "cc"},
 }

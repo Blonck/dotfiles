@@ -1,12 +1,9 @@
 local set = vim.opt
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 set.hidden = true
 set.wrap = false
 set.fileencoding = 'utf-8'
-set.browsedir = 'current'
+--set.browsedir = 'current'
 
 set.expandtab = true
 set.tabstop = 4
