@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-# My personal dotfiles (There are no passwords saved in these files! )
+# My personal dotfiles
 
 This is a collection of my personal config files for:
 
