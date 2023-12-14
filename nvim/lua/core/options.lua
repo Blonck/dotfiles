@@ -55,4 +55,4 @@ set.undolevels = 1000
 set.hidden = true       -- enable background buffers
 set.lazyredraw = true   -- for faster scrolling
 set.synmaxcol = 240     -- disable syntax highlighting after 240
-set.updatetime = 250    -- time to wait before trigger to event
+set.updatetime = 100    -- time to wait before trigger to event

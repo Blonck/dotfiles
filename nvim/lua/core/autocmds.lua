@@ -13,6 +13,15 @@ autocmd(
 --   { command = [[if expand('%:p') !~ '://' | :lchdi %:p:h | endif]] }
 -- )
 
+
+-- vim.api.nvim_command([[
+-- " Triger `autoread` when files changes on disk
+-- autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+-- " Notification after file change
+-- autocmd FileChangedShellPost *
+--   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+-- ]])
+
 ---- terminal settings
 
 -- open terminal on the right tab

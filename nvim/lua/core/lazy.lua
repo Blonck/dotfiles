@@ -32,7 +32,10 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = {"nvim-lua/plenary.nvim"}
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-symbols.nvim",
+        }
     },
 
     ---- LSP
@@ -104,18 +107,20 @@ require("lazy").setup({
         "akinsho/toggleterm.nvim", version = "*", config = true
     },
 
+    -- tagbar
+    {
+        "preservim/tagbar",
+    },
+
+    -- color scheme
+    {
+        "navarasu/onedark.nvim",
+        lazy = true,
+    },
+
     -- status bar
     -- {
     --     "freddiehaddad/feline.nvim",
     --     opts = {},
     -- }
 })
-
---return require('packer').startup(function(use)
---    -- autocomplition
---    use 'SirVer/UltiSnips'     -- UltiSnips plugin
---    use "quangnguyen30192/cmp-nvim-ultisnips" -- UltiSnips nvim-cmp 
---    use "onsails/lspkind-nvim"
---
---
---end)

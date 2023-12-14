@@ -31,10 +31,12 @@ vim.keymap.set("n", "<F4>", ":NvimTreeToggle<CR>", opts)
 -- find file :NvimTreeFindFile<CR>
 
 ---- git
-vim.keymap.set("n", "<leader>gb", ":Twiggy<CR>", opts)
+vim.keymap.set("n", "<leader>gt", ":Twiggy<CR>", opts)
 vim.keymap.set("n", "<leader>gh", ":Flog<CR>", opts)
 vim.keymap.set("n", "<leader>gs", ":Gitsigns toggle_signs<CR>", opts)
 vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", opts)
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git, opts)
+
 
 
 ---- telescope
@@ -48,9 +50,13 @@ vim.keymap.set("n", "<leader>fd", builtin.diagnostics, opts)
 vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, opts)
 vim.keymap.set("n", "<silent><nowait> <space>z", builtin.spell_suggest, opts)
 vim.keymap.set("n", "<silent><nowait> <space>cc", builtin.command_history, opts)
+vim.keymap.set("n", "<leader>pf", builtin.git_files, opts)
 
 -- set in toggleterm config
 -- vim.keymap.set("n", "<F5>", ":toggleterm<CR>", opts)
+
+-- tagbar
+vim.keymap.set("n", "<leader>t", ":TagbarToggle<CR>", opts)
 
 ----[[ old mappings which I may reuse later
 ----
@@ -66,19 +72,6 @@ vim.keymap.set("n", "<silent><nowait> <space>cc", builtin.command_history, opts)
 --    " paste into system buffer
 --    :nnoremap <leader>p "+gP <CR>
 --
---
---
---    " nerdtee toggle
---    nnoremap <F4> :NERDTreeTabsToggle<CR>
---    " merginal toggle
---    nnoremap <F3> :Twiggy<CR>
---
---    " Telescope
---    nnoremap <leader>ff <cmd>Telescope git_files show_untracked=false<cr>
---    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
---    nnoremap <leader>fb <cmd>Telescope buffers<cr>
---    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
---    nnoremap <leader>fs <cmd>Telescope current_buffer_fuzzy_find<cr>
 --
 --    nmap <silent> <leader>j <Plug>(coc-definition)
 --    nmap <leader>l <Plug>(coc-references)
