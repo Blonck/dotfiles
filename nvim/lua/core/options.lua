@@ -7,7 +7,6 @@ vim.g.loaded_netrwPlugin = 1
 
 -- general
 set.mouse = 'a'                 -- enable mouse support
-set.swapfile = false            -- disable swapfiles
 set.clipboard = 'unnamedplus'   -- enable system clipboard
 -- set.autochdir = true            -- change into dir of current file
 
@@ -22,6 +21,7 @@ set.completeopt = {'longest' , 'menuone' , 'preview'}
 
 -- UI
 set.number = true           -- show line number
+set.relativenumber = true   -- relative line number
 set.showmatch = true        -- highlight matching parenthesis
 set.visualbell = true       -- enable visual bell
 set.wrap = false            -- disable line wrapping
@@ -45,11 +45,16 @@ set.smartindent = true  -- autoindent new lines
 
 -- history
 set.history = 1000
-set.hlsearch = true
+set.hlsearch = true                                 -- highlight search terms
 set.incsearch = true
 set.ignorecase = true
-set.smartcase = true
 set.undolevels = 1000
+set.swapfile = false                                -- disable swapfiles
+set.backup = false                                  -- disable backup
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"   -- specify undo directory
+set.undofile = true                                 -- enable undo files
+
+
 
 -- background
 set.hidden = true       -- enable background buffers

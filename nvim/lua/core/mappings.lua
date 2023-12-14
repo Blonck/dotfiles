@@ -7,12 +7,16 @@ vim.g.maplocalleader = '\\'
 -- replace word under cursor
 vim.keymap.set('n', '<Leader>r', [[:%s/<C-r><C-w>/<C-r><C-w>]], opts)
 
+-- don't loose word when pasting
+vim.keymap.set('n', "<leader>p", "\"_dP", opts)
+
 -- working with tabs
 
 vim.keymap.set('n', '<C-n>', ':cnext <CR>', opts) -- next item
 vim.keymap.set('n', '<C-j>', ':lnext <CR>', opts) -- last item
 vim.keymap.set('n', '<Leader>d', ':tabnext<CR>', opts) -- next tab
 vim.keymap.set('n', '<Leader>a', ':tabprevious<CR>', opts) -- previous tab
+
 
 -- toggle spell check
 vim.keymap.set("n", "<Leader>s", function()
@@ -36,8 +40,7 @@ vim.keymap.set("n", "<leader>gh", ":Flog<CR>", opts)
 vim.keymap.set("n", "<leader>gs", ":Gitsigns toggle_signs<CR>", opts)
 vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", opts)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, opts)
-
-
+vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", opts)
 
 ---- telescope
 local builtin = require('telescope.builtin')
@@ -48,8 +51,6 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, opts)
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, opts)
 vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, opts)
-vim.keymap.set("n", "<silent><nowait> <space>z", builtin.spell_suggest, opts)
-vim.keymap.set("n", "<silent><nowait> <space>cc", builtin.command_history, opts)
 vim.keymap.set("n", "<leader>pf", builtin.git_files, opts)
 
 -- set in toggleterm config
