@@ -56,7 +56,7 @@ require("lazy").setup({
         }
     },
 
-     -- UltiSnips plugin
+    -- UltiSnips plugin
     {
         "SirVer/UltiSnips"
     },

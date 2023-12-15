@@ -37,7 +37,7 @@ vim.keymap.set("n", "<F4>", ":NvimTreeToggle<CR>", opts)
 ---- git
 vim.keymap.set("n", "<leader>gt", ":Twiggy<CR>", opts)
 vim.keymap.set("n", "<leader>gh", ":Flog<CR>", opts)
-vim.keymap.set("n", "<leader>gs", ":Gitsigns toggle_signs<CR>", opts)
+vim.keymap.set("n", "<leader>gl", ":Gitsigns toggle_signs<CR>", opts)
 vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", opts)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, opts)
 vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", opts)
