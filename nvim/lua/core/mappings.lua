@@ -4,8 +4,11 @@ vim.g.mapleader = ','
 vim.g.maplocalleader = '\\'
 
 
+-- explore
+vim.keymap.set('n', '<leader>fx', vim.cmd.Ex, opts)
+
 -- replace word under cursor
-vim.keymap.set('n', '<Leader>r', [[:%s/<C-r><C-w>/<C-r><C-w>]], opts)
+vim.keymap.set('n', '<leader>r', [[:%s/<C-r><C-w>/<C-r><C-w>]], opts)
 
 -- don't loose word when pasting
 vim.keymap.set('n', "<leader>p", "\"_dP", opts)
@@ -14,8 +17,8 @@ vim.keymap.set('n', "<leader>p", "\"_dP", opts)
 
 vim.keymap.set('n', '<C-n>', ':cnext <CR>', opts) -- next item
 vim.keymap.set('n', '<C-j>', ':lnext <CR>', opts) -- last item
-vim.keymap.set('n', '<Leader>d', ':tabnext<CR>', opts) -- next tab
-vim.keymap.set('n', '<Leader>a', ':tabprevious<CR>', opts) -- previous tab
+vim.keymap.set('n', '<leader>d', ':tabnext<CR>', opts) -- next tab
+vim.keymap.set('n', '<leader>a', ':tabprevious<CR>', opts) -- previous tab
 
 
 -- toggle spell check
@@ -30,7 +33,7 @@ end
 vim.keymap.set("n", "<Leader>w", ':lua trim_whitespace()<CR>', opts)
 
 ---- nvim-tree
-vim.keymap.set("n", "<F4>", ":NvimTreeToggle<CR>", opts)
+-- vim.keymap.set("n", "<F4>", ":NvimTreeToggle<CR>", opts)
 -- refresh :NvimTreeRefresh<CR>
 -- find file :NvimTreeFindFile<CR>
 

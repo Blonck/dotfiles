@@ -20,10 +20,10 @@ require("lazy").setup({
     "davidbeckingsale/writegood.vim",
 
     -- file explorer
-    {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-    },
+    -- {
+    --     "nvim-tree/nvim-tree.lua",
+    --     dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- },
 
     -- treesitter
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
