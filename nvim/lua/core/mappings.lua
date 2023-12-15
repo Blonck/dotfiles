@@ -6,12 +6,16 @@ vim.g.maplocalleader = '\\'
 
 -- explore
 vim.keymap.set('n', '<leader>fx', vim.cmd.Ex, opts)
+vim.keymap.set('n', '<leader>fl', vim.cmd.Lex, opts)
 
 -- replace word under cursor
 vim.keymap.set('n', '<leader>r', [[:%s/<C-r><C-w>/<C-r><C-w>]], opts)
 
 -- don't loose word when pasting
 vim.keymap.set('n', "<leader>p", "\"_dP", opts)
+
+-- like 'J' but keep cursor at position
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- working with tabs
 
