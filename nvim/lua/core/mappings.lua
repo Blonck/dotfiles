@@ -42,7 +42,6 @@ vim.keymap.set("n", "<Leader>w", ':lua trim_whitespace()<CR>', opts)
 -- find file :NvimTreeFindFile<CR>
 
 ---- git
-vim.keymap.set("n", "<leader>gt", ":Twiggy<CR>", opts)
 vim.keymap.set("n", "<leader>gh", ":Flog<CR>", opts)
 vim.keymap.set("n", "<leader>gl", ":Gitsigns toggle_signs<CR>", opts)
 vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", opts)
@@ -53,6 +52,8 @@ vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", opts)
 local builtin = require('telescope.builtin')
 
 vim.keymap.set("n", "<leader>ff", builtin.find_files, opts)
+vim.keymap.set("n", "<leader>fa", builtin.treesitter, opts)
+vim.keymap.set("n", "<leader>ft", builtin.tags, opts)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, opts)
 vim.keymap.set("n", "<leader>fb", builtin.buffers, opts)
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)

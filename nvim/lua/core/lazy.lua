@@ -19,12 +19,6 @@ require("lazy").setup({
     -- highlight common writing problems
     "davidbeckingsale/writegood.vim",
 
-    -- file explorer
-    -- {
-    --     "nvim-tree/nvim-tree.lua",
-    --     dependencies = { "nvim-tree/nvim-web-devicons" },
-    -- },
-
     -- treesitter
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
 
@@ -67,16 +61,6 @@ require("lazy").setup({
     {
         "tpope/vim-fugitive",
         -- event = "User InGitRepo",
-    },
-
-    -- git branches
-    {
-        "sodapopcan/vim-twiggy",
-        lazy = true,
-        cmd = { "Twiggy" },
-        dependencies = {
-            "tpope/vim-fugitive",
-        }
     },
 
     -- history viewer
