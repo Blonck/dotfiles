@@ -7,13 +7,6 @@ autocmd(
   { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]] }
 )
 
--- set working directory to current directory for all buffers
--- autocmd(
---   "BufReadPost",
---   { command = [[if expand('%:p') !~ '://' | :lchdi %:p:h | endif]] }
--- )
-
-
 -- vim.api.nvim_command([[
 -- " Triger `autoread` when files changes on disk
 -- autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
