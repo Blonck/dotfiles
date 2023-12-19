@@ -1,3 +1,8 @@
+set nocompatible
+
+syntax enable
+filetype plugin on
+
 set backspace=2
 set hidden                              " hide buffers instead of closing
 set nowrap                              " don't wrap lines
@@ -16,6 +21,7 @@ set history=1000                        " bigger search and commands history
 set undolevels=1000                     " much more undo levels
 set wildignore=*.o,*.swp,*.pyc          " ignoring file extensions
 set wildignore+=*/.git/*                " ignore git folder
+set wildmenu                            " display all matches when tab complete
 set wildmode=list:full                  " complete word until longest match
 set visualbell
 set noerrorbells                        " don't beep
@@ -24,6 +30,7 @@ set browsedir=current                   " which directory to use for
 set tags+=~/.vim/tags/cpp               " set tags directory
 set mouse=a                             " enables mouse in all modes
 set autoread                            " automatically refresh files
+set path+=**                            " search down into subfolders
 
 " spell
 set nospell
