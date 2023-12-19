@@ -1,5 +1,4 @@
 # the big things
-#emacs.d		~/.emacs.d
 #fluxbox		~/.fluxbox
 #screenrc		~/.screenrc
 #xprofile	 	~/.xprofile
@@ -10,15 +9,14 @@ xscreensaver	~/.xscreensaver
 #zshenv 		~/.zshenv
 
 # the small things
-ssh_config	~/.ssh/config
-nvim		~/.config/nvim
-vim		~/.vim
-vimrc		~/.vimrc
-tmux.conf	~/.tmux.conf
-gvimrc          ~/.gvimrc
-gitconfig       ~/.gitconfig
-gitignore 	~/.gitignore
-clang-format    ~/.clang-format
-ycm_extra_conf.py ~/.ycm_extra_conf.py
-gnuplotting 	~/.gnuplotting
-gnuplot 	~/.gnuplot
+ssh_config          ~/.ssh/config
+nvim                ~/.config/nvim
+vim                 ~/.vim
+vimrc               ~/.vimrc
+tmux.conf           ~/.tmux.conf
+gvimrc              ~/.gvimrc
+gitignore           ~/.gitignore
+clang-format        ~/.clang-format
+ycm_extra_conf.py   ~/.ycm_extra_conf.py
+gnuplotting         ~/.gnuplotting
+gnuplot             ~/.gnuplot
