@@ -11,7 +11,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>l', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
+    vim.keymap.set('n', '<leader>F', function() vim.lsp.buf.format { async = true } end, opts)
 end
 
 local root_patterns = { ".git", ".clang-format", "pyproject.toml", "setup.py" }
