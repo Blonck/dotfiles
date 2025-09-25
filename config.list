@@ -1,22 +1,11 @@
-# the big things
-#fluxbox		~/.fluxbox
-#screenrc		~/.screenrc
-#xprofile	 	~/.xprofile
-zsh         	~/.zsh
-zshrc		~/.zshrc
-Xresources	~/.Xresources
-xscreensaver	~/.xscreensaver
-#zshenv 		~/.zshenv
+zsh         	    ~/.zsh
+zshrc		    ~/.zshrc
 
-# the small things
 ssh_config          ~/.ssh/config
 nvim                ~/.config/nvim
 vim                 ~/.vim
 vimrc               ~/.vimrc
 tmux.conf           ~/.tmux.conf
-gvimrc              ~/.gvimrc
 gitignore           ~/.gitignore
-clang-format        ~/.clang-format
-ycm_extra_conf.py   ~/.ycm_extra_conf.py
 gnuplotting         ~/.gnuplotting
 gnuplot             ~/.gnuplot
