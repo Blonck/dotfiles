@@ -1,7 +1,0 @@
-HashKnownHosts no
-
-
-Host data-minion-2020.dev.ttw
-    HostName data-minion-2020.dev.ttw
-    #ProxyCommand /usr/bin/corkscrew proxy.dev.ttw 3128 %h %p
-    User marenz
