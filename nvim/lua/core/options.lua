@@ -9,7 +9,7 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 -- general
 set.mouse = 'a'                 -- enable mouse support
 set.clipboard = 'unnamedplus'   -- enable system clipboard
--- set.autochdir = true            -- change into dir of current file
+-- set.autochdir = true         -- change into dir of current file
 
 -- ignore files
 set.wildignore = {'*.o' , '*.swp' , '*.pyc'} 
@@ -34,7 +34,8 @@ set.splitright = true       -- vertical split to the right
 set.spell = true            -- enable spell checking
 set.scrolloff = 5
 set.list = true
-set.listchars = 'tab:>-,trail:·'
+-- set.listchars = 'tab:>-,trail:·'
+set.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 
 -- indentation
@@ -54,8 +55,6 @@ set.swapfile = false                                -- disable swapfiles
 set.backup = false                                  -- disable backup
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"   -- specify undo directory
 set.undofile = true                                 -- enable undo files
-
-
 
 -- background
 set.hidden = true       -- enable background buffers

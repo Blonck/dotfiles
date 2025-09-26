@@ -41,14 +41,14 @@ vim.keymap.set("n", "<Leader>w", ':lua trim_whitespace()<CR>', opts)
 -- refresh :NvimTreeRefresh<CR>
 -- find file :NvimTreeFindFile<CR>
 
----- git
+-- git
 vim.keymap.set("n", "<leader>gh", ":Flog<CR>", opts)
 vim.keymap.set("n", "<leader>gl", ":Gitsigns toggle_signs<CR>", opts)
 vim.keymap.set("n", "<leader>gf", ":Gitsigns toggle_current_line_blame<CR>", opts)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, opts)
 vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", opts)
 
----- telescope
+-- telescope
 local builtin = require('telescope.builtin')
 
 vim.keymap.set("n", "<leader>gb", builtin.git_branches, opts)
@@ -61,9 +61,6 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, opts)
 vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, opts)
 vim.keymap.set("n", "<leader>pf", builtin.git_files, opts)
-
--- set in toggleterm config
--- vim.keymap.set("n", "<F5>", ":toggleterm<CR>", opts)
 
 -- tagbar
 vim.keymap.set("n", "<leader>t", ":TagbarToggle<CR>", opts)
