@@ -47,6 +47,7 @@ vim.keymap.set("n", "<leader>gl", ":Gitsigns toggle_signs<CR>", opts)
 vim.keymap.set("n", "<leader>gf", ":Gitsigns toggle_current_line_blame<CR>", opts)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, opts)
 vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", opts)
+vim.keymap.set("n", "<leader>gB", ":Git blame<CR>", opts)
 
 -- telescope
 local builtin = require('telescope.builtin')
