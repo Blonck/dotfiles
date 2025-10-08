@@ -1,4 +1,4 @@
-﻿## Source from conf.d before our fish config
+## Source from conf.d before our fish config
 source ~/.config/fish/conf.d/done.fish
 
 # Format man pages
@@ -54,9 +54,11 @@ end
 if [ "$fish_key_bindings" = fish_vi_key_bindings ];
   bind -Minsert ! __history_previous_command
   bind -Minsert '$' __history_previous_command_arguments
+  bind -Minsert \cr history-pager
 else
   bind ! __history_previous_command
   bind '$' __history_previous_command_arguments
+  bind \cr history-pager
 end
 
 # Fish command history
