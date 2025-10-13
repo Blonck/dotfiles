@@ -66,6 +66,10 @@ vim.keymap.set("n", "<leader>pf", builtin.git_files, opts)
 -- tagbar
 vim.keymap.set("n", "<leader>t", ":TagbarToggle<CR>", opts)
 
+
+--vim.keymap.set("n", "<F5>", ":FloatermToggle<CR>", opts)
+--vim.keymap.set("n", "<leader>cc", ":FloatermToggle<CR>", opts)
+
 ----[[ old mappings which I may reuse later
 ----
 --
