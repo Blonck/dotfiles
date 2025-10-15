@@ -5,10 +5,11 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = ','
 vim.g.maplocalleader = '\\'
 
-
 -- explore
 vim.keymap.set('n', '<leader>fx', vim.cmd.Ex, opts)
 vim.keymap.set('n', '<leader>fl', vim.cmd.Lex, opts)
+vim.keymap.set('i', '<leader>cf', '<C-x><C-f>', opts)
+vim.keymap.set('i', '<leader>cl', '<C-x><C-l>', opts)
 
 -- replace word under cursor
 vim.keymap.set('n', '<leader>r', [[:%s/<C-r><C-w>/<C-r><C-w>]], opts)
@@ -20,22 +21,21 @@ vim.keymap.set('n', "<leader>p", "\"_dP", opts)
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- working with tabs
-
-vim.keymap.set('n', '<C-n>', ':cnext <CR>', opts) -- next item
-vim.keymap.set('n', '<C-j>', ':lnext <CR>', opts) -- last item
-vim.keymap.set('n', '<leader>d', ':tabnext<CR>', opts) -- next tab
+vim.keymap.set('n', '<C-n>', ':cnext <CR>', opts)          -- next item
+vim.keymap.set('n', '<C-j>', ':lnext <CR>', opts)          -- last item
+vim.keymap.set('n', '<leader>d', ':tabnext<CR>', opts)     -- next tab
 vim.keymap.set('n', '<leader>a', ':tabprevious<CR>', opts) -- previous tab
-
 
 -- toggle spell check
 vim.keymap.set("n", "<Leader>s", function()
-    vim.opt_local.spell = not(vim.opt_local.spell:get())
+    vim.opt_local.spell = not (vim.opt_local.spell:get())
 end)
 
 -- trim whitespace
 function trim_whitespace()
     vim.api.nvim_command([[:%s/\s\+$//e]])
 end
+
 vim.keymap.set("n", "<Leader>w", ':lua trim_whitespace()<CR>', opts)
 
 ---- nvim-tree
@@ -60,7 +60,7 @@ vim.keymap.set("n", "<leader>fa", builtin.treesitter, opts)
 vim.keymap.set("n", "<leader>ft", builtin.tags, opts)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, opts)
 vim.keymap.set("n", "<leader>fG", function()
-  builtin.live_grep({ default_text = vim.fn.expand('<cword>') })
+    builtin.live_grep({ default_text = vim.fn.expand('<cword>') })
 end, opts)
 vim.keymap.set("n", "<leader>fb", builtin.buffers, opts)
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)
@@ -71,9 +71,6 @@ vim.keymap.set("n", "<leader>pf", builtin.git_files, opts)
 -- tagbar
 vim.keymap.set("n", "<leader>t", ":TagbarToggle<CR>", opts)
 
-
---vim.keymap.set("n", "<F5>", ":FloatermToggle<CR>", opts)
---vim.keymap.set("n", "<leader>cc", ":FloatermToggle<CR>", opts)
 
 ----[[ old mappings which I may reuse later
 ----
