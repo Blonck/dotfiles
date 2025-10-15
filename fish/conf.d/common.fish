@@ -1,3 +1,5 @@
+## Common fish shell configuration (shared across all platforms)
+
 ## Source from conf.d before our fish config
 source ~/.config/fish/conf.d/done.fish
 
@@ -110,11 +112,5 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'                                   # Hardware Info
 
-# Get fastest mirrors
-alias mirror="sudo cachyos-rate-mirrors"
-
 # Get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
-
-# Recent installed packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"

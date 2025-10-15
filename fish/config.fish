@@ -1,5 +1,17 @@
-source ~/.config/fish/conf.d/generic.fish
+## Load common configuration (shared across all platforms)
+source ~/.config/fish/conf.d/common.fish
 
+## Detect platform and load platform-specific configuration
+if test -f /etc/os-release
+    set -l os_id (grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
+
+    if test "$os_id" = "cachyos"
+        # Load CachyOS-specific configuration
+        source ~/.config/fish/conf.d/platform-cachyos.fish
+    end
+end
+
+## Custom settings and functions
 set -x EDITOR nvim
 
 fish_add_path $HOME/local/bin/
