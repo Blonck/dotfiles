@@ -20,7 +20,26 @@ require("lazy").setup({
     "davidbeckingsale/writegood.vim",
 
     ---- treesitter
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      config = function()
+        require('nvim-treesitter.configs').setup {
+          ensure_installed = { "c", "cpp", "python", "rust", "lua", "julia",
+                               "bash", "vim", "json", "html", "yaml", "markdown",},
+          auto_install = true,
+          highlight = {
+            enable = true,
+          },
+          ident = { enable = true },
+          additional_vim_regex_highlighting = false,
+        }
+
+        vim.opt.foldmethod = "expr"
+        vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+        vim.opt.foldlevel = 99
+      end
+    },
 
     -- telescope
     {
@@ -29,7 +48,10 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-symbols.nvim",
-        }
+        },
+        config = function()
+          require('telescope').setup{}
+        end
     },
 
     -- LSP Plugins
@@ -308,7 +330,33 @@ require("lazy").setup({
     },
 
     -- Collection of various small independent plugins/modules
-    { 'echasnovski/mini.nvim' },
+    {
+      'echasnovski/mini.nvim',
+      config = function()
+        -- Simple and easy statusline.
+        local statusline = require('mini.statusline').setup({
+          use_icons = vim.g.have_nerd_font
+        })
+
+        -- Better Around/Inside textobjects
+        --
+        -- Examples:
+        --  - va)  - [V]isually select [A]round [)]paren
+        --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
+        --  - ci'  - [C]hange [I]nside [']quote
+        -- require('mini.ai').setup { n_lines = 500 }
+
+        -- Add/delete/replace surroundings (brackets, quotes, etc.)
+        --
+        -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+        -- - sd'   - [S]urround [D]elete [']quotes
+        -- - sr)'  - [S]urround [R]eplace [)] [']
+        -- require('mini.surround').setup()
+
+        -- ... and there is more!
+        --  Check out: https://github.com/echasnovski/mini.nvim
+      end
+    },
 
     -- work with git
     {
@@ -335,13 +383,26 @@ require("lazy").setup({
         'kyazdani42/nvim-web-devicons',
       },
       config = function()
-        require('gitsigns').setup{}
+        require("gitsigns").setup{
+          signcolumn = false,
+          current_line_blame = false,
+          current_line_blame_opts = {
+            delay = 50
+          }
+        }
       end
     },
 
     -- terminal
     {
-        "akinsho/toggleterm.nvim", version = "*", config = true
+      "akinsho/toggleterm.nvim",
+      version = "*",
+      config = function()
+        require("toggleterm").setup{
+          open_mapping = "<F5>",
+          direction = 'float'
+        }
+      end
     },
 
     -- tagbar
