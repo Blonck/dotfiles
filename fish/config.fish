@@ -4,6 +4,7 @@ set -x EDITOR nvim
 
 fish_add_path $HOME/local/bin/
 fish_add_path $HOME/.local/bin/
+fish_add_path $HOME/.cargo/bin/
 
 # fixed socket for ssh auth
 if test -S "$SSH_AUTH_SOCK"; and not test -L "$SSH_AUTH_SOCK"
@@ -61,6 +62,9 @@ function auto_venv --on-variable PWD --description "Auto activate/deactivate ven
         set current_dir (dirname $current_dir)
     end
 end
+
+# trigger auto_venv for new shell in case we open the shell directly in a venv dir
+auto_venv
 
 function mamba_shell --description "Initialize fish shell to use mamba"
     # >>> mamba initialize >>>
