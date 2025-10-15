@@ -1,3 +1,5 @@
+-- the LSP mappings can be found in lsp.lua as they are loaded on demand
+
 local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ','
