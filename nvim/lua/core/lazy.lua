@@ -84,7 +84,20 @@ require("lazy").setup({
         { 'j-hui/fidget.nvim', opts = {} },
 
         -- Allows extra capabilities provided by blink.cmp
-        'saghen/blink.cmp',
+        {
+          'saghen/blink.cmp',
+          version = '1.*',
+          opts = {
+            keymap = { preset = 'default' },
+            appearance = {
+              nerd_font_variant = 'mono'
+            },
+            fuzzy = { implementation = "prefer_rust" },
+            sources = {
+              default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+          },
+        },
       },
       config = require('core/lsp'),
     },
