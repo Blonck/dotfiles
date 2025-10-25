@@ -1,8 +1,10 @@
-zsh         	    ~/.zsh
-zshrc		    ~/.zshrc
+zsh                 ~/.zsh
+zshrc               ~/.zshrc
 
 ssh_config          ~/.ssh/config
 nvim                ~/.config/nvim
+fish                ~/.config/fish
+zellij              ~/.config/zellij
 vim                 ~/.vim
 vimrc               ~/.vimrc
 tmux.conf           ~/.tmux.conf
