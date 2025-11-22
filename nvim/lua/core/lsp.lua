@@ -150,29 +150,6 @@ return function()
   local servers = {
     clangd = {},
     pyright = {
-      before_init = function(_, config)
-        -- Auto-detect .venv in project root or parent directories
-        local function find_venv(path)
-          local current = path
-          while current ~= '/' do
-            local venv_path = current .. '/.venv'
-            if vim.fn.isdirectory(venv_path) == 1 then
-              return venv_path
-            end
-            current = vim.fn.fnamemodify(current, ':h')
-          end
-          return nil
-        end
-
-        local root_dir = config.root_dir
-        if root_dir then
-          local venv_path = find_venv(root_dir)
-          if venv_path then
-            config.settings.python = config.settings.python or {}
-            config.settings.python.pythonPath = venv_path .. '/bin/python'
-          end
-        end
-      end,
     },
     rust_analyzer = {},
     -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
