@@ -157,7 +157,10 @@ keybinds clear-defaults=true {
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
+        bind "Alt a" { NewTab; SwitchToMode "normal";}
+        bind "Alt s" { NewPane "right"; NewPane "stacked"; }
         bind "Alt o" { MoveTab "right"; }
+        bind "Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "Ctrl Alt h" { GoToPreviousTab; }
         bind "Ctrl Alt l" { GoToNextTab; }
         bind "Ctrl Alt left" { GoToPreviousTab; }
