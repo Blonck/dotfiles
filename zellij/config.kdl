@@ -140,7 +140,6 @@ keybinds clear-defaults=true {
         }
     }
     shared {
-        bind "Shift Tab" { GoToNextTab; }
         bind "Alt left" { MoveFocusOrTab "left"; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
@@ -159,6 +158,10 @@ keybinds clear-defaults=true {
         bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
+        bind "Ctrl Alt h" { GoToPreviousTab; }
+        bind "Ctrl Alt l" { GoToNextTab; }
+        bind "Ctrl Alt left" { GoToPreviousTab; }
+        bind "Ctrl Alt right" { GoToNextTab; }
     }
     shared_except "locked" {
         bind "Alt p" { TogglePaneInGroup; }
