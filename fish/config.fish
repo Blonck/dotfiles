@@ -82,6 +82,27 @@ end
 # trigger auto_venv for new shell in case we open the shell directly in a venv dir
 auto_venv
 
+function devtab --description "Open a zellij dev tab with 1 left + 2 stacked right panes"
+    if not set -q ZELLIJ
+        echo "Error: Not running inside a zellij session"
+        return 1
+    end
+
+    if test (count $argv) -eq 0
+        set target_path (pwd)
+    else
+        set target_path (realpath $argv[1])
+    end
+
+    if not test -d "$target_path"
+        echo "Error: '$target_path' is not a directory"
+        return 1
+    end
+
+    set tab_name (basename $target_path)
+    zellij action new-tab --layout dev --name "$tab_name" --cwd "$target_path"
+end
+
 function mamba_shell --description "Initialize fish shell to use mamba"
     
 # >>> mamba initialize >>>

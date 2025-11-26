@@ -165,6 +165,8 @@ keybinds clear-defaults=true {
         bind "Ctrl Alt l" { GoToNextTab; }
         bind "Ctrl Alt left" { GoToPreviousTab; }
         bind "Ctrl Alt right" { GoToNextTab; }
+        bind "Ctrl Alt q" { CloseTab; }
+        bind "Ctrl Alt n" { NewTab; SwitchToMode "normal"; }
     }
     shared_except "locked" {
         bind "Alt p" { TogglePaneInGroup; }
