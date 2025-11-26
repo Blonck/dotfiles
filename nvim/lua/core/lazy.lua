@@ -50,7 +50,29 @@ require("lazy").setup({
             "nvim-telescope/telescope-symbols.nvim",
         },
         config = function()
-          require('telescope').setup{}
+          local action_layout = require('telescope.actions.layout')
+
+          require('telescope').setup{
+            defaults = {
+              path_display = { "shorten=2" },
+              layout_strategy = "vertical",
+              layout_config = {
+                width = 0.95,
+                height = 0.9,
+              },
+              sorting_strategy = "ascending",
+              file_ignore_patterns = { "node_modules", ".git/", "%.o" },
+              cycle_layout_list = { "vertical", "horizontal" },
+              mappings = {
+                i = {
+                  ["<C-p>"] = action_layout.cycle_layout_next,
+                },
+                n = {
+                  ["<C-p>"] = action_layout.cycle_layout_next,
+                },
+              },
+            },
+          }
         end
     },
 
