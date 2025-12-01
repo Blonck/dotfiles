@@ -1,0 +1,20 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane split_direction="vertical" {
+        pane size="50%" {
+            command "fish"
+            args "-c" "auto_venv; nvim; exec fish"
+        }
+        pane stacked=true {
+            pane {
+                command "claude"
+            }
+            pane
+        }
+    }
+    pane size=2 borderless=true {
+        plugin location="status-bar"
+    }
+}
