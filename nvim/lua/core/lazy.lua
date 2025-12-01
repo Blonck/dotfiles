@@ -210,6 +210,9 @@ require("lazy").setup({
         "navarasu/onedark.nvim",
         lazy = true,
     },
+    {
+        "EdenEast/nightfox.nvim",
+    }
 
     ---- status bar
     ---- {
