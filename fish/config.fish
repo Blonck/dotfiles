@@ -16,7 +16,7 @@ set -x EDITOR nvim
 
 fish_add_path $HOME/local/bin/
 fish_add_path $HOME/.local/bin/
-fish_add_path $HOME/.cargo/bin/
+#fish_add_path $HOME/.cargo/bin/
 
 # fixed socket for ssh auth
 if test -S "$SSH_AUTH_SOCK"; and not test -L "$SSH_AUTH_SOCK"
