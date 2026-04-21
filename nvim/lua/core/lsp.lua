@@ -149,7 +149,28 @@ return function()
   --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
   local servers = {
     clangd = {},
-    pyright = {
+    basedpyright = {
+      settings = {
+        basedpyright = {
+          -- ruff handles import organization
+          disableOrganizeImports = true,
+          analysis = {
+            -- let ruff own the lint-style diagnostics that overlap
+            diagnosticSeverityOverrides = {
+              reportUnusedImport = 'none',
+              reportUnusedVariable = 'none',
+              reportUnusedFunction = 'none',
+              reportUnusedClass = 'none',
+            },
+          },
+        },
+      },
+    },
+    ruff = {
+      on_attach = function(client, _)
+        -- let basedpyright own hover; ruff hover just shows rule names
+        client.server_capabilities.hoverProvider = false
+      end,
     },
     rust_analyzer = {},
     -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs

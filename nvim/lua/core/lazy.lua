@@ -20,7 +20,9 @@ require("lazy").setup({
     {
       'folke/which-key.nvim',
       event = 'VeryLazy',
-      opts = {},
+      opts = {
+        delay = 500,
+      },
     },
 
     -- highlight common writing problems
