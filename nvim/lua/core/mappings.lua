@@ -56,7 +56,6 @@ local builtin = require('telescope.builtin')
 
 vim.keymap.set("n", "<leader>gb", builtin.git_branches, opts)
 vim.keymap.set("n", "<leader>ff", builtin.find_files, opts)
-vim.keymap.set("n", "<leader>fa", builtin.treesitter, opts)
 vim.keymap.set("n", "<leader>ft", builtin.tags, opts)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, opts)
 vim.keymap.set("n", "<leader>fG", function()
