@@ -38,6 +38,21 @@ end
 
 vim.keymap.set("n", "<Leader>w", trim_whitespace, opts)
 
+-- toggle diagnostic hints (keeps warnings and errors visible)
+local hints_visible = true
+vim.keymap.set("n", "<leader>td", function()
+    hints_visible = not hints_visible
+    local min = hints_visible and vim.diagnostic.severity.HINT or vim.diagnostic.severity.ERROR
+    vim.diagnostic.config({
+        virtual_text = {
+            severity = { min = min },
+            source = 'if_many',
+            spacing = 2,
+        },
+        signs = { severity = { min = min } },
+    })
+end, { desc = 'Toggle diagnostic hints' })
+
 ---- nvim-tree
 -- vim.keymap.set("n", "<F4>", ":NvimTreeToggle<CR>", opts)
 -- refresh :NvimTreeRefresh<CR>
