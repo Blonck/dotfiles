@@ -32,11 +32,11 @@ vim.keymap.set("n", "<Leader>s", function()
 end)
 
 -- trim whitespace
-function trim_whitespace()
-    vim.api.nvim_command([[:%s/\s\+$//e]])
+local function trim_whitespace()
+    vim.cmd([[%s/\s\+$//e]])
 end
 
-vim.keymap.set("n", "<Leader>w", ':lua trim_whitespace()<CR>', opts)
+vim.keymap.set("n", "<Leader>w", trim_whitespace, opts)
 
 ---- nvim-tree
 -- vim.keymap.set("n", "<F4>", ":NvimTreeToggle<CR>", opts)
@@ -66,10 +66,6 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, opts)
 vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, opts)
 vim.keymap.set("n", "<leader>pf", builtin.git_files, opts)
-
--- tagbar
-vim.keymap.set("n", "<leader>t", ":TagbarToggle<CR>", opts)
-
 
 ----[[ old mappings which I may reuse later
 ----

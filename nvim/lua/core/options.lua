@@ -16,8 +16,8 @@ set.wildignore = {'*.o' , '*.swp' , '*.pyc'}
 set.wildignore:append('*/.git/*')
 
 -- autocomplete options
-set.complete = {'.', 'w' ,' b' ,' u' , 'k', 't'}
-set.completeopt = {'longest' , 'menuone' , 'preview'}
+set.complete = {'.', 'w', 'b', 'u', 'k', 't'}
+set.completeopt = {'menu', 'menuone', 'noinsert'}
 
 
 -- UI
@@ -49,7 +49,6 @@ set.smartindent = true  -- autoindent new lines
 set.history = 1000
 set.hlsearch = true                                 -- highlight search terms
 set.incsearch = true
-set.ignorecase = true
 set.undolevels = 1000
 set.swapfile = false                                -- disable swapfiles
 set.backup = false                                  -- disable backup
@@ -58,6 +57,6 @@ set.undofile = true                                 -- enable undo files
 
 -- background
 set.hidden = true       -- enable background buffers
-set.lazyredraw = true   -- for faster scrolling
 set.synmaxcol = 240     -- disable syntax highlighting after 240
 set.updatetime = 100    -- time to wait before trigger to event
+set.timeoutlen = 300    -- time to wait for a mapped sequence

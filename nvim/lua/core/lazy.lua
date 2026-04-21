@@ -1,6 +1,6 @@
 -- install lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -16,13 +16,19 @@ require("lazy").setup({
     -- Detect tabstop and shiftwidth automatically
     'NMAC427/guess-indent.nvim',
 
+    -- Display available keybindings in a popup
+    {
+      'folke/which-key.nvim',
+      event = 'VeryLazy',
+      opts = {},
+    },
+
     -- highlight common writing problems
     "davidbeckingsale/writegood.vim",
 
     -- telescope
     {
         "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-symbols.nvim",
@@ -153,7 +159,7 @@ require("lazy").setup({
       'lewis6991/gitsigns.nvim',
       dependencies = {
         'nvim-lua/plenary.nvim',
-        'kyazdani42/nvim-web-devicons',
+        'nvim-tree/nvim-web-devicons',
       },
       config = function()
         require("gitsigns").setup{
@@ -176,11 +182,6 @@ require("lazy").setup({
           direction = 'float'
         }
       end
-    },
-
-    -- tagbar
-    {
-        "preservim/tagbar",
     },
 
     -- color scheme

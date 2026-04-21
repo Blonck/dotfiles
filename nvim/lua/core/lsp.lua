@@ -38,7 +38,7 @@ return function()
 
       -- Fuzzy find all the symbols in your current workspace.
       --  Similar to document symbols, except searches over your entire project.
-      map('<leaeder>S', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+      map('<leader>S', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
       map('<leader>F', function() vim.lsp.buf.format {async = true} end, '[F]ormat Buffer')
 
