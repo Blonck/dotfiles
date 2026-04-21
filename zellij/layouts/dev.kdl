@@ -3,14 +3,9 @@ layout {
         plugin location="tab-bar"
     }
     pane split_direction="vertical" {
-        pane size="50%" {
-            command "fish"
-            args "-c" "auto_venv; nvim; exec fish"
-        }
+        pane size="50%"
         pane stacked=true {
-            pane {
-                command "claude"
-            }
+            pane
             pane
         }
     }

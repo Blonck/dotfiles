@@ -579,4 +579,4 @@ scroll_buffer_size 100000
 // of this command will be used instead of the discovered RESURRECT_COMMAND
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
-// post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+post_command_discovery_hook "echo $SHELL"
