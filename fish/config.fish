@@ -16,7 +16,8 @@ set -x EDITOR nvim
 
 fish_add_path $HOME/local/bin/
 fish_add_path $HOME/.local/bin/
-#fish_add_path $HOME/.cargo/bin/
+fish_add_path $HOME/.cargo/bin/
+fish_add_path $HOME/.nebius/bin/
 
 # fixed socket for ssh auth
 if test -S "$SSH_AUTH_SOCK"; and not test -L "$SSH_AUTH_SOCK"
@@ -35,7 +36,7 @@ function venv --description "Create and activate a new virtual environment"
         source .venv/bin/activate.fish
     else
         echo "Creating virtual environment in "(pwd)"/.venv"
-        python3 -m venv .venv --upgrade-deps
+        uv .venv --python 3.11
         source .venv/bin/activate.fish
 
         # Append .venv to the Git exclude file, but only if it's not
@@ -100,8 +101,16 @@ function devtab --description "Open a zellij dev tab with 1 left + 2 stacked rig
     end
 
     set tab_name (basename $target_path)
+    set existing (zellij action list-tabs --json 2>/dev/null | string match -r "\"name\":\"$tab_name\"")
+    if test -n "$existing"
+        zellij action go-to-tab-name "$tab_name"
+        return 0
+    end
     zellij action new-tab --layout dev --name "$tab_name" --cwd "$target_path"
 end
+
+alias claude-me="CLAUDE_CONFIG_DIR=~/.claude-me claude"
+alias claude-yasp="CLAUDE_CONFIG_DIR=~/.claude-yasp claude"
 
 function mamba_shell --description "Initialize fish shell to use mamba"
     
